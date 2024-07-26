@@ -119,9 +119,6 @@ export namespace TaskCreateParams {
   export interface Task {
     data: unknown;
 
-    /**
-     * The mode of the task. Direct is currently the only supported task mode
-     */
     mode: 'DIRECT';
 
     type: string;
