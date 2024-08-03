@@ -165,7 +165,7 @@ export namespace ProposalRetrieveResponse {
 
 export interface ProposalRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 

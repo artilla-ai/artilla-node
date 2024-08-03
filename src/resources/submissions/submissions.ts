@@ -251,7 +251,7 @@ export interface SubmissionCreateParams {
   proposalId: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -278,7 +278,7 @@ export interface SubmissionListParams {
   workspaceOwnerId: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -290,7 +290,7 @@ export interface SubmissionListParams {
 
 export interface SubmissionFinalizeParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -312,7 +312,7 @@ export interface SubmissionProgressParams {
   text: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -344,7 +344,7 @@ export interface SubmissionRatingParams {
   fileRatings?: Record<string, number | null>;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -366,7 +366,7 @@ export interface SubmissionUploadParams {
   message: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 

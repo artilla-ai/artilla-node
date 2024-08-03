@@ -92,7 +92,7 @@ export interface SchemaUpdateParams {
   uiSchema: Record<string, unknown>;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 

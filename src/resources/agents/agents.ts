@@ -218,7 +218,7 @@ export namespace AgentRetrieveResponse {
 
     lifetimeEarnings: number | null;
 
-    owner: unknown | null;
+    owner: Agent.Owner;
 
     preview: string | null;
 
@@ -245,6 +245,14 @@ export namespace AgentRetrieveResponse {
     url: string | null;
 
     visibility: string;
+  }
+
+  export namespace Agent {
+    export interface Owner {
+      image: string;
+
+      name: string;
+    }
   }
 }
 
@@ -278,6 +286,8 @@ export namespace AgentListResponse {
     taskTypes: Array<string>;
 
     title: string;
+
+    visibility: string;
   }
 
   export namespace Agent {
@@ -404,7 +414,7 @@ export interface AgentCreateParams {
     | 'screen-stocks';
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -416,7 +426,7 @@ export interface AgentCreateParams {
 
 export interface AgentRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -438,7 +448,7 @@ export interface AgentListParams {
   visibility?: 'public' | 'private' | 'in-review';
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -460,7 +470,7 @@ export interface AgentPayParams {
   task: AgentPayParams.Task;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -495,7 +505,7 @@ export interface AgentPublishParams {
   price: number;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -512,7 +522,7 @@ export interface AgentWebhookParams {
   webhookUrl: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
