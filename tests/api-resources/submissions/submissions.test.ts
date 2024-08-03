@@ -3,11 +3,11 @@
 import Artilla from 'artilla';
 import { Response } from 'node-fetch';
 
-const artilla = new Artilla({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Artilla({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource submissions', () => {
   test('create: only required params', async () => {
-    const responsePromise = artilla.submissions.create({ proposalId: 'proposalId' });
+    const responsePromise = client.submissions.create({ proposalId: 'proposalId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,7 +18,7 @@ describe('resource submissions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await artilla.submissions.create({
+    const response = await client.submissions.create({
       proposalId: 'proposalId',
       authorization: 'authorization',
       'x-api-key': 'x-api-key',
@@ -26,7 +26,7 @@ describe('resource submissions', () => {
   });
 
   test('list: only required params', async () => {
-    const responsePromise = artilla.submissions.list({
+    const responsePromise = client.submissions.list({
       agentId: 'agentId',
       status: 'status',
       workspaceOwnerId: 'workspaceOwnerId',
@@ -41,7 +41,7 @@ describe('resource submissions', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await artilla.submissions.list({
+    const response = await client.submissions.list({
       agentId: 'agentId',
       status: 'status',
       workspaceOwnerId: 'workspaceOwnerId',
@@ -51,7 +51,7 @@ describe('resource submissions', () => {
   });
 
   test('finalize', async () => {
-    const responsePromise = artilla.submissions.finalize('submissionId');
+    const responsePromise = client.submissions.finalize('submissionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -64,14 +64,14 @@ describe('resource submissions', () => {
   test('finalize: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      artilla.submissions.finalize('submissionId', { path: '/_stainless_unknown_path' }),
+      client.submissions.finalize('submissionId', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Artilla.NotFoundError);
   });
 
   test('finalize: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      artilla.submissions.finalize(
+      client.submissions.finalize(
         'submissionId',
         { authorization: 'authorization', 'x-api-key': 'x-api-key' },
         { path: '/_stainless_unknown_path' },
@@ -80,10 +80,7 @@ describe('resource submissions', () => {
   });
 
   test('progress: only required params', async () => {
-    const responsePromise = artilla.submissions.progress('submissionId', {
-      progressPercent: 0,
-      text: 'text',
-    });
+    const responsePromise = client.submissions.progress('submissionId', { progressPercent: 0, text: 'text' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -94,7 +91,7 @@ describe('resource submissions', () => {
   });
 
   test('progress: required and optional params', async () => {
-    const response = await artilla.submissions.progress('submissionId', {
+    const response = await client.submissions.progress('submissionId', {
       progressPercent: 0,
       text: 'text',
       authorization: 'authorization',
@@ -103,7 +100,7 @@ describe('resource submissions', () => {
   });
 
   test('rating: only required params', async () => {
-    const responsePromise = artilla.submissions.rating('submissionId', { comment: 'comment', rating: 0 });
+    const responsePromise = client.submissions.rating('submissionId', { comment: 'comment', rating: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -114,7 +111,7 @@ describe('resource submissions', () => {
   });
 
   test('rating: required and optional params', async () => {
-    const response = await artilla.submissions.rating('submissionId', {
+    const response = await client.submissions.rating('submissionId', {
       comment: 'comment',
       rating: 0,
       fileComments: { foo: 'string' },
@@ -125,7 +122,7 @@ describe('resource submissions', () => {
   });
 
   test('upload: only required params', async () => {
-    const responsePromise = artilla.submissions.upload('submissionId', {
+    const responsePromise = client.submissions.upload('submissionId', {
       files: [
         { key: 'key', url: 'url', contentType: 'contentType', description: 'description' },
         { key: 'key', url: 'url', contentType: 'contentType', description: 'description' },
@@ -143,7 +140,7 @@ describe('resource submissions', () => {
   });
 
   test('upload: required and optional params', async () => {
-    const response = await artilla.submissions.upload('submissionId', {
+    const response = await client.submissions.upload('submissionId', {
       files: [
         { key: 'key', url: 'url', contentType: 'contentType', description: 'description' },
         { key: 'key', url: 'url', contentType: 'contentType', description: 'description' },
