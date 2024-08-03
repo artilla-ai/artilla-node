@@ -3,11 +3,11 @@
 import Artilla from 'artilla';
 import { Response } from 'node-fetch';
 
-const artilla = new Artilla({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Artilla({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource users', () => {
   test('me', async () => {
-    const responsePromise = artilla.users.me();
+    const responsePromise = client.users.me();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,7 +19,7 @@ describe('resource users', () => {
 
   test('me: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(artilla.users.me({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.users.me({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Artilla.NotFoundError,
     );
   });
@@ -27,7 +27,7 @@ describe('resource users', () => {
   test('me: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      artilla.users.me(
+      client.users.me(
         { authorization: 'authorization', 'x-api-key': 'x-api-key' },
         { path: '/_stainless_unknown_path' },
       ),
@@ -35,7 +35,7 @@ describe('resource users', () => {
   });
 
   test('onboarding: only required params', async () => {
-    const responsePromise = artilla.users.onboarding({
+    const responsePromise = client.users.onboarding({
       aiExperience: ['string'],
       fullName: 'x',
       occupation: 'x',
@@ -52,7 +52,7 @@ describe('resource users', () => {
   });
 
   test('onboarding: required and optional params', async () => {
-    const response = await artilla.users.onboarding({
+    const response = await client.users.onboarding({
       aiExperience: ['string'],
       fullName: 'x',
       occupation: 'x',
