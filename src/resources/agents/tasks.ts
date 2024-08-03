@@ -74,6 +74,8 @@ export namespace TaskCreateResponse {
 
     mode: string;
 
+    paymentState: unknown | null;
+
     status: string;
 
     type: string;
@@ -105,7 +107,7 @@ export interface TaskCreateParams {
   task: TaskCreateParams.Task;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 

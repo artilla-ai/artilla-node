@@ -7,7 +7,7 @@ import * as ReferralAPI from './referral';
 
 export class Referral extends APIResource {
   /**
-   * Get referral
+   * Fetch the name and display image of a referring user by the referral code
    */
   retrieve(
     referralCode: string,
@@ -53,7 +53,7 @@ export namespace ReferralRetrieveResponse {
 
 export interface ReferralRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
