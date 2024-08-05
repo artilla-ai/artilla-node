@@ -76,8 +76,6 @@ export namespace ProposalRetrieveResponse {
     export interface Agent {
       id: string;
 
-      apiKey: string;
-
       averageRating: string | null;
 
       createdAt: string;
@@ -123,6 +121,8 @@ export namespace ProposalRetrieveResponse {
       id: string;
 
       additionalSearches: number | null;
+
+      apiKey: string | null;
 
       billingSettings: unknown | null;
 

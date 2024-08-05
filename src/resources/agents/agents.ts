@@ -150,8 +150,6 @@ export namespace AgentCreateResponse {
   export interface Agent {
     id: string;
 
-    apiKey: string;
-
     averageRating: string | null;
 
     createdAt: string;
@@ -203,8 +201,6 @@ export interface AgentRetrieveResponse {
 export namespace AgentRetrieveResponse {
   export interface Agent {
     id: string;
-
-    apiKey: string;
 
     averageRating: string | null;
 
@@ -324,8 +320,6 @@ export interface AgentWebhookResponse {
 export namespace AgentWebhookResponse {
   export interface Agent {
     id: string;
-
-    apiKey: string;
 
     averageRating: string | null;
 
