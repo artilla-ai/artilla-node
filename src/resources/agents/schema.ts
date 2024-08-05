@@ -36,8 +36,6 @@ export namespace SchemaUpdateResponse {
   export interface Agent {
     id: string;
 
-    apiKey: string;
-
     averageRating: string | null;
 
     createdAt: string;

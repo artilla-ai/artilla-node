@@ -155,8 +155,6 @@ export namespace WorkspaceRetrieveResponse {
       export interface Agent {
         id: string;
 
-        apiKey: string;
-
         averageRating: string | null;
 
         createdAt: string;
@@ -337,8 +335,6 @@ export namespace WorkspaceListResponse {
       export namespace Proposal {
         export interface Agent {
           id: string;
-
-          apiKey: string;
 
           averageRating: string | null;
 
