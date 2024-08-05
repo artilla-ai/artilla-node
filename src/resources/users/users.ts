@@ -70,8 +70,6 @@ export namespace UserMeResponse {
   export interface Agent {
     id: string;
 
-    apiKey: string;
-
     averageRating: string | null;
 
     createdAt: string;
@@ -120,6 +118,8 @@ export namespace UserMeResponse {
     id: string;
 
     additionalSearches: number | null;
+
+    apiKey: string | null;
 
     billingSettings: unknown | null;
 
