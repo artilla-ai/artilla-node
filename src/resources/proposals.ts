@@ -76,8 +76,6 @@ export namespace ProposalRetrieveResponse {
     export interface Agent {
       id: string;
 
-      apiKey: string;
-
       averageRating: string | null;
 
       createdAt: string;
@@ -124,6 +122,8 @@ export namespace ProposalRetrieveResponse {
 
       additionalSearches: number | null;
 
+      apiKey: string | null;
+
       billingSettings: unknown | null;
 
       createdAt: string;
@@ -165,7 +165,7 @@ export namespace ProposalRetrieveResponse {
 
 export interface ProposalRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 

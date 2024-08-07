@@ -116,6 +116,7 @@ export class Artilla extends Core.APIClient {
   }
 
   static Artilla = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static ArtillaError = Errors.ArtillaError;
   static APIError = Errors.APIError;

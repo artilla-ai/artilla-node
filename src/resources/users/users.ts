@@ -10,7 +10,7 @@ export class Users extends APIResource {
   referral: ReferralAPI.Referral = new ReferralAPI.Referral(this._client);
 
   /**
-   * Upload files to a submission
+   * Fetches the currently logged in user along with a list of their agent.
    */
   me(params?: UserMeParams, options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>;
   me(options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>;
@@ -33,7 +33,7 @@ export class Users extends APIResource {
   }
 
   /**
-   * Submit basic info about the user
+   * Submit basic demographic information about the user
    */
   onboarding(
     params: UserOnboardingParams,
@@ -55,16 +55,20 @@ export class Users extends APIResource {
 export interface UserMeResponse {
   agents: Array<UserMeResponse.Agent>;
 
+  /**
+   * Indicates if the request was successful
+   */
   success: boolean;
 
+  /**
+   * The current user
+   */
   user: UserMeResponse.User;
 }
 
 export namespace UserMeResponse {
   export interface Agent {
     id: string;
-
-    apiKey: string;
 
     averageRating: string | null;
 
@@ -107,10 +111,15 @@ export namespace UserMeResponse {
     visibility: string;
   }
 
+  /**
+   * The current user
+   */
   export interface User {
     id: string;
 
     additionalSearches: number | null;
+
+    apiKey: string | null;
 
     billingSettings: unknown | null;
 
@@ -120,6 +129,9 @@ export namespace UserMeResponse {
 
     data: unknown | null;
 
+    /**
+     * The user's email
+     */
     email: string;
 
     emailVerified: string | null;
@@ -134,8 +146,6 @@ export namespace UserMeResponse {
 
     membershipTier: string | null;
 
-    name: string | null;
-
     numReferrals: number | null;
 
     paymentDetails: unknown | null;
@@ -147,6 +157,11 @@ export namespace UserMeResponse {
     referredBy: string | null;
 
     updatedAt: string;
+
+    /**
+     * The user's name
+     */
+    name?: string;
   }
 }
 
@@ -158,7 +173,7 @@ export interface UserOnboardingResponse {
 
 export interface UserMeParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -215,7 +230,7 @@ export interface UserOnboardingParams {
   otherReferralSource?: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 

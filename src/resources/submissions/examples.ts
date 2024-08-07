@@ -87,7 +87,7 @@ export namespace ExampleRetrieveResponse {
 
 export interface ExampleRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 

@@ -107,6 +107,8 @@ export namespace WorkspaceRetrieveResponse {
 
     mode: string;
 
+    paymentState: unknown | null;
+
     proposals: Array<Task.Proposal>;
 
     status: string;
@@ -152,8 +154,6 @@ export namespace WorkspaceRetrieveResponse {
     export namespace Proposal {
       export interface Agent {
         id: string;
-
-        apiKey: string;
 
         averageRating: string | null;
 
@@ -288,6 +288,8 @@ export namespace WorkspaceListResponse {
 
       mode: string;
 
+      paymentState: unknown | null;
+
       proposals: Array<Task.Proposal>;
 
       status: string;
@@ -333,8 +335,6 @@ export namespace WorkspaceListResponse {
       export namespace Proposal {
         export interface Agent {
           id: string;
-
-          apiKey: string;
 
           averageRating: string | null;
 
@@ -405,7 +405,7 @@ export namespace WorkspaceListResponse {
 
 export interface WorkspaceRetrieveParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -417,7 +417,7 @@ export interface WorkspaceRetrieveParams {
 
 export interface WorkspaceListParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -429,7 +429,7 @@ export interface WorkspaceListParams {
 
 export interface WorkspaceWatchParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 

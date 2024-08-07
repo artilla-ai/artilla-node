@@ -25,7 +25,7 @@ import Artilla from 'artilla';
 const client = new Artilla();
 
 async function main() {
-  const userMeResponse = await artilla.users.me();
+  const userMeResponse = await client.users.me();
 
   console.log(userMeResponse.agents);
 }
@@ -44,7 +44,7 @@ import Artilla from 'artilla';
 const client = new Artilla();
 
 async function main() {
-  const userMeResponse: Artilla.UserMeResponse = await artilla.users.me();
+  const userMeResponse: Artilla.UserMeResponse = await client.users.me();
 }
 
 main();
@@ -61,7 +61,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const userMeResponse = await artilla.users.me().catch(async (err) => {
+  const userMeResponse = await client.users.me().catch(async (err) => {
     if (err instanceof Artilla.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -104,7 +104,7 @@ const client = new Artilla({
 });
 
 // Or, configure per-request:
-await artilla.users.me({
+await client.users.me({
   maxRetries: 5,
 });
 ```
@@ -121,7 +121,7 @@ const client = new Artilla({
 });
 
 // Override per-request:
-await artilla.users.me({
+await client.users.me({
   timeout: 5 * 1000,
 });
 ```
@@ -142,11 +142,11 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Artilla();
 
-const response = await artilla.users.me().asResponse();
+const response = await client.users.me().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: userMeResponse, response: raw } = await artilla.users.me().withResponse();
+const { data: userMeResponse, response: raw } = await client.users.me().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(userMeResponse.agents);
 ```
@@ -252,7 +252,7 @@ const client = new Artilla({
 });
 
 // Override per-request:
-await artilla.users.me({
+await client.users.me({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
