@@ -1,6 +1,6 @@
 {
   "name": "artilla",
-  "version": "0.0.1-alpha.1",
+  "version": "0.1.0-alpha.1",
   "description": "The official TypeScript library for the Artilla API",
   "author": "Artilla <contact@artilla.ai>",
   "types": "dist/index.d.ts",
