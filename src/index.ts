@@ -2,7 +2,8 @@
 
 import * as Errors from './error';
 import * as Uploads from './uploads';
-import { type Agent } from './_shims/index';
+import { isRequestOptions } from './core';
+import { type Agent, type RequestInit } from './_shims/index';
 import * as Core from './core';
 import * as API from './resources/index';
 
@@ -65,7 +66,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Artilla API.
+ * API Client for interfacing with the Artilla API. 
  */
 export class Artilla extends Core.APIClient {
   private _options: ClientOptions;
@@ -81,7 +82,11 @@ export class Artilla extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('ARTILLA_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('ARTILLA_BASE_URL'),
+    ...opts
+  }: ClientOptions = {}) {
+
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://localhost:8080/test-api`,
@@ -96,6 +101,7 @@ export class Artilla extends Core.APIClient {
     });
 
     this._options = options;
+
   }
 
   users: API.Users = new API.Users(this);
@@ -105,7 +111,7 @@ export class Artilla extends Core.APIClient {
   workspaces: API.Workspaces = new API.Workspaces(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
-    return this._options.defaultQuery;
+    return this._options.defaultQuery
   }
 
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
@@ -116,7 +122,7 @@ export class Artilla extends Core.APIClient {
   }
 
   static Artilla = this;
-  static DEFAULT_TIMEOUT = 60000; // 1 minute
+  static DEFAULT_TIMEOUT = 60000 // 1 minute
 
   static ArtillaError = Errors.ArtillaError;
   static APIError = Errors.APIError;
@@ -136,21 +142,7 @@ export class Artilla extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
-  ArtillaError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} = Errors;
+export const { ArtillaError, APIError, APIConnectionError, APIConnectionTimeoutError, APIUserAbortError, NotFoundError, ConflictError, RateLimitError, BadRequestError, AuthenticationError, InternalServerError, PermissionDeniedError, UnprocessableEntityError } = Errors
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
@@ -168,40 +160,25 @@ export namespace Artilla {
   export import AgentCreateResponse = API.AgentCreateResponse;
   export import AgentRetrieveResponse = API.AgentRetrieveResponse;
   export import AgentListResponse = API.AgentListResponse;
-  export import AgentPayResponse = API.AgentPayResponse;
-  export import AgentPublishResponse = API.AgentPublishResponse;
-  export import AgentWebhookResponse = API.AgentWebhookResponse;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentRetrieveParams = API.AgentRetrieveParams;
   export import AgentListParams = API.AgentListParams;
-  export import AgentPayParams = API.AgentPayParams;
-  export import AgentPublishParams = API.AgentPublishParams;
-  export import AgentWebhookParams = API.AgentWebhookParams;
 
   export import Proposals = API.Proposals;
-  export import ProposalRetrieveResponse = API.ProposalRetrieveResponse;
-  export import ProposalRetrieveParams = API.ProposalRetrieveParams;
 
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
   export import SubmissionListResponse = API.SubmissionListResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = API.SubmissionProgressResponse;
-  export import SubmissionRatingResponse = API.SubmissionRatingResponse;
   export import SubmissionUploadResponse = API.SubmissionUploadResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
   export import SubmissionListParams = API.SubmissionListParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
   export import SubmissionProgressParams = API.SubmissionProgressParams;
-  export import SubmissionRatingParams = API.SubmissionRatingParams;
   export import SubmissionUploadParams = API.SubmissionUploadParams;
 
   export import Workspaces = API.Workspaces;
-  export import WorkspaceRetrieveResponse = API.WorkspaceRetrieveResponse;
-  export import WorkspaceListResponse = API.WorkspaceListResponse;
-  export import WorkspaceRetrieveParams = API.WorkspaceRetrieveParams;
-  export import WorkspaceListParams = API.WorkspaceListParams;
-  export import WorkspaceWatchParams = API.WorkspaceWatchParams;
 }
 
 export default Artilla;

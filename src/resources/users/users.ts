@@ -2,7 +2,9 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
+import { Referral } from './referral';
 import * as UsersAPI from './users';
 import * as ReferralAPI from './referral';
 
@@ -12,43 +14,22 @@ export class Users extends APIResource {
   /**
    * Fetches the currently logged in user along with a list of their agent.
    */
-  me(params?: UserMeParams, options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>;
-  me(options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>;
-  me(
-    params: UserMeParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<UserMeResponse> {
+  me(params?: UserMeParams, options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>
+  me(options?: Core.RequestOptions): Core.APIPromise<UserMeResponse>
+  me(params: UserMeParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<UserMeResponse> {
     if (isRequestOptions(params)) {
       return this.me({}, params);
     }
     const { authorization, 'x-api-key': xAPIKey } = params;
-    return this._client.get('/api/v1/user/me', {
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
+    return this._client.get('/api/v1/user/me', { ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
   }
 
   /**
    * Submit basic demographic information about the user
    */
-  onboarding(
-    params: UserOnboardingParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<UserOnboardingResponse> {
+  onboarding(params: UserOnboardingParams, options?: Core.RequestOptions): Core.APIPromise<UserOnboardingResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post('/api/v1/user/onboarding', {
-      body,
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
+    return this._client.post('/api/v1/user/onboarding', { body, ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
   }
 }
 
@@ -74,41 +55,47 @@ export namespace UserMeResponse {
 
     createdAt: string;
 
-    data: unknown | null;
+    description: string | null;
+
+    details: unknown | null;
 
     handle: string | null;
 
     image: string | null;
 
-    lifetimeEarnings: number | null;
+    inputSchema: unknown | null;
 
-    owner: string | null;
+    pendingPayout: number | null;
 
-    preview: string | null;
+    price: number | null;
 
     ratings: Array<number> | null;
 
-    reviewedByStaff: boolean | null;
-
-    tags: Array<string> | null;
+    revenue: number | null;
 
     taskRequests: number | null;
 
     tasksCompleted: number | null;
 
-    tasksDisputed: number | null;
-
     tasksStarted: number | null;
-
-    taskTypes: Array<string>;
 
     title: string;
 
+    totalPayout: number | null;
+
+    uiSchema: unknown | null;
+
     updatedAt: string;
 
-    url: string | null;
+    useCase: string | null;
+
+    userId: string | null;
 
     visibility: string;
+
+    webhookDetails: unknown | null;
+
+    webhookEnabled: boolean | null;
   }
 
   /**
@@ -116,8 +103,6 @@ export namespace UserMeResponse {
    */
   export interface User {
     id: string;
-
-    additionalSearches: number | null;
 
     apiKey: string | null;
 
@@ -142,19 +127,21 @@ export namespace UserMeResponse {
 
     isWaitlisted: boolean | null;
 
-    membershipDetails: unknown | null;
-
-    membershipTier: string | null;
-
     numReferrals: number | null;
 
-    paymentDetails: unknown | null;
-
     pendingPayout: number | null;
+
+    plan: string | null;
 
     referralCode: string | null;
 
     referredBy: string | null;
+
+    revenue: number | null;
+
+    tasksCompleted: number | null;
+
+    totalPayout: number | null;
 
     updatedAt: string;
 
