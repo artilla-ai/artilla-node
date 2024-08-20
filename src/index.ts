@@ -2,8 +2,7 @@
 
 import * as Errors from './error';
 import * as Uploads from './uploads';
-import { isRequestOptions } from './core';
-import { type Agent, type RequestInit } from './_shims/index';
+import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as API from './resources/index';
 
@@ -66,7 +65,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Artilla API. 
+ * API Client for interfacing with the Artilla API.
  */
 export class Artilla extends Core.APIClient {
   private _options: ClientOptions;
@@ -82,11 +81,7 @@ export class Artilla extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({
-    baseURL = Core.readEnv('ARTILLA_BASE_URL'),
-    ...opts
-  }: ClientOptions = {}) {
-
+  constructor({ baseURL = Core.readEnv('ARTILLA_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://localhost:8080/test-api`,
@@ -101,7 +96,6 @@ export class Artilla extends Core.APIClient {
     });
 
     this._options = options;
-
   }
 
   users: API.Users = new API.Users(this);
@@ -111,7 +105,7 @@ export class Artilla extends Core.APIClient {
   workspaces: API.Workspaces = new API.Workspaces(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
-    return this._options.defaultQuery
+    return this._options.defaultQuery;
   }
 
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
@@ -122,7 +116,7 @@ export class Artilla extends Core.APIClient {
   }
 
   static Artilla = this;
-  static DEFAULT_TIMEOUT = 60000 // 1 minute
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static ArtillaError = Errors.ArtillaError;
   static APIError = Errors.APIError;
@@ -142,7 +136,21 @@ export class Artilla extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const { ArtillaError, APIError, APIConnectionError, APIConnectionTimeoutError, APIUserAbortError, NotFoundError, ConflictError, RateLimitError, BadRequestError, AuthenticationError, InternalServerError, PermissionDeniedError, UnprocessableEntityError } = Errors
+export const {
+  ArtillaError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} = Errors;
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
