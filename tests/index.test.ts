@@ -3,7 +3,7 @@
 import Artilla from 'artilla';
 import { APIUserAbortError } from 'artilla';
 import { Headers } from 'artilla/core';
-import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
+import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch'
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -20,10 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new Artilla({
-      baseURL: 'http://localhost:5000/',
-      defaultHeaders: { 'X-My-Default-Header': '2' },
-    });
+    const client = new Artilla({ baseURL: 'http://localhost:5000/', defaultHeaders: { 'X-My-Default-Header': '2' } })
 
     test('they are used in the request', () => {
       const { req } = client.buildRequest({ path: '/foo', method: 'post' });
@@ -56,57 +53,50 @@ describe('instantiate client', () => {
     });
 
     test('multiple default query params', () => {
-      const client = new Artilla({
-        baseURL: 'http://localhost:5000/',
-        defaultQuery: { apiVersion: 'foo', hello: 'world' },
-      });
+      const client = new Artilla({ baseURL: 'http://localhost:5000/', defaultQuery: { apiVersion: 'foo', hello: 'world' } });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo&hello=world');
     });
 
     test('overriding with `undefined`', () => {
-      const client = new Artilla({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } });
+      const client = new Artilla({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } })
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
   });
 
   test('custom fetch', async () => {
-    const client = new Artilla({
-      baseURL: 'http://localhost:5000/',
-      fetch: (url) => {
-        return Promise.resolve(
-          new Response(JSON.stringify({ url, custom: true }), {
-            headers: { 'Content-Type': 'application/json' },
-          }),
-        );
-      },
-    });
+    const client = new Artilla({ baseURL: 'http://localhost:5000/', fetch: (url) => {
+  return Promise.resolve(
+    new Response(JSON.stringify({ url, custom: true }), {
+      headers: { 'Content-Type': 'application/json' },
+    }),
+  );
+} });
 
     const response = await client.get('/foo');
     expect(response).toEqual({ url: 'http://localhost:5000/foo', custom: true });
   });
 
   test('custom signal', async () => {
-    const client = new Artilla({
-      baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-      fetch: (...args) => {
-        return new Promise((resolve, reject) =>
-          setTimeout(
-            () =>
-              defaultFetch(...args)
-                .then(resolve)
-                .catch(reject),
-            300,
-          ),
-        );
-      },
-    });
+    const client = new Artilla({ baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010', fetch: (...args) => {
+  return new Promise((resolve, reject) =>
+    setTimeout(
+      () =>
+        defaultFetch(...args)
+          .then(resolve)
+          .catch(reject),
+      300,
+    ),
+  );
+} });
 
     const controller = new AbortController();
     setTimeout(() => controller.abort(), 200);
 
     const spy = jest.spyOn(client, 'request');
 
-    await expect(client.get('/foo', { signal: controller.signal })).rejects.toThrowError(APIUserAbortError);
+    await expect(client.get('/foo', { signal: controller.signal })).rejects.toThrowError(
+      APIUserAbortError,
+    );
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -139,14 +129,15 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['ARTILLA_BASE_URL'] = ''; // empty
       const client = new Artilla({});
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('https://localhost:8080/test-api')
     });
 
     test('blank env variable', () => {
       process.env['ARTILLA_BASE_URL'] = '  '; // blank
       const client = new Artilla({});
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('https://localhost:8080/test-api')
     });
+
   });
 
   test('maxRetries option is correctly set', () => {
@@ -157,6 +148,7 @@ describe('instantiate client', () => {
     const client2 = new Artilla({});
     expect(client2.maxRetries).toEqual(2);
   });
+
 });
 
 describe('request building', () => {
@@ -176,18 +168,13 @@ describe('request building', () => {
 
   describe('custom headers', () => {
     test('handles undefined', () => {
-      const { req } = client.buildRequest({
-        path: '/foo',
-        method: 'post',
-        body: { value: 'hello' },
-        headers: { 'X-Foo': 'baz', 'x-foo': 'bar', 'x-Foo': undefined, 'x-baz': 'bam', 'X-Baz': null },
-      });
+      const { req } = client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' }, headers: { 'X-Foo': 'baz', 'x-foo': 'bar', 'x-Foo': undefined, 'x-baz': 'bam', 'X-Baz': null } });
       expect((req.headers as Record<string, string>)['x-foo']).toEqual('bar');
       expect((req.headers as Record<string, string>)['x-Foo']).toEqual(undefined);
       expect((req.headers as Record<string, string>)['X-Foo']).toEqual(undefined);
       expect((req.headers as Record<string, string>)['x-baz']).toEqual(undefined);
     });
-  });
+  })
 });
 
 describe('retries', () => {
@@ -195,8 +182,8 @@ describe('retries', () => {
     let count = 0;
     const testFetch = async (url: RequestInfo, { signal }: RequestInit = {}): Promise<Response> => {
       if (count++ === 0) {
-        return new Promise(
-          (resolve, reject) => signal?.addEventListener('abort', () => reject(new Error('timed out'))),
+        return new Promise((resolve, reject) =>
+          signal?.addEventListener('abort', () => reject(new Error('timed out'))),
         );
       }
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
