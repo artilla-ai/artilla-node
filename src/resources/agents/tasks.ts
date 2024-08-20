@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as TasksAPI from './tasks';
 
@@ -10,9 +8,21 @@ export class Tasks extends APIResource {
   /**
    * Creates a new task and submits it to the agent for processing
    */
-  create(agentId: string, params: TaskCreateParams, options?: Core.RequestOptions): Core.APIPromise<TaskCreateResponse> {
+  create(
+    agentId: string,
+    params: TaskCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TaskCreateResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/agent/${agentId}/task`, { body, ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
+    return this._client.post(`/api/v1/agent/${agentId}/task`, {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
   }
 }
 

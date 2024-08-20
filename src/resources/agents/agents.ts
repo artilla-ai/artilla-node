@@ -2,10 +2,7 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
-import { Tasks } from './tasks';
-import { Schema } from './schema';
 import * as AgentsAPI from './agents';
 import * as SchemaAPI from './schema';
 import * as TasksAPI from './tasks';
@@ -19,33 +16,67 @@ export class Agents extends APIResource {
    */
   create(params: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<AgentCreateResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post('/api/v1/agent/', { body, ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
+    return this._client.post('/api/v1/agent/', {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
   }
 
   /**
    * Gets a single agent by it's agent ID
    */
-  retrieve(agentId: string, params?: AgentRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<AgentRetrieveResponse>
-  retrieve(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentRetrieveResponse>
-  retrieve(agentId: string, params: AgentRetrieveParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<AgentRetrieveResponse> {
+  retrieve(
+    agentId: string,
+    params?: AgentRetrieveParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentRetrieveResponse>;
+  retrieve(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentRetrieveResponse>;
+  retrieve(
+    agentId: string,
+    params: AgentRetrieveParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentRetrieveResponse> {
     if (isRequestOptions(params)) {
       return this.retrieve(agentId, {}, params);
     }
     const { authorization, 'x-api-key': xAPIKey } = params;
-    return this._client.get(`/api/v1/agent/${agentId}`, { ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
+    return this._client.get(`/api/v1/agent/${agentId}`, {
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
   }
 
   /**
    * Lists agents
    */
-  list(params?: AgentListParams, options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>
-  list(options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>
-  list(params: AgentListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<AgentListResponse> {
+  list(params?: AgentListParams, options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>;
+  list(
+    params: AgentListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentListResponse> {
     if (isRequestOptions(params)) {
       return this.list({}, params);
     }
     const { authorization, 'x-api-key': xAPIKey, ...query } = params;
-    return this._client.get('/api/v1/agent/', { query, ...options, headers: { ...(authorization != null ? { authorization: authorization } : undefined), ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined), ...options?.headers } });
+    return this._client.get('/api/v1/agent/', {
+      query,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
   }
 }
 
