@@ -101,8 +101,8 @@ describe('resource submissions', () => {
     });
   });
 
-  test('uploadFiles: only required params', async () => {
-    const responsePromise = client.submissions.uploadFiles('submissionId', {
+  test('upload: only required params', async () => {
+    const responsePromise = client.submissions.upload('submissionId', {
       files: [
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
@@ -119,8 +119,8 @@ describe('resource submissions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('uploadFiles: required and optional params', async () => {
-    const response = await client.submissions.uploadFiles('submissionId', {
+  test('upload: required and optional params', async () => {
+    const response = await client.submissions.upload('submissionId', {
       files: [
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },

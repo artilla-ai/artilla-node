@@ -16,13 +16,19 @@ export {
   SubmissionFinalizeResponse,
   SubmissionProgressResponse,
   SubmissionReviewResponse,
-  SubmissionUploadFilesResponse,
+  SubmissionUploadResponse,
   SubmissionCreateParams,
   SubmissionFinalizeParams,
   SubmissionProgressParams,
   SubmissionReviewParams,
-  SubmissionUploadFilesParams,
+  SubmissionUploadParams,
   Submissions,
 } from './submissions';
 export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';
-export { Users } from './users/users';
+export {
+  UserMeResponse,
+  UserOnboardingResponse,
+  UserMeParams,
+  UserOnboardingParams,
+  Users,
+} from './users/users';
