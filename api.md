@@ -26,12 +26,14 @@ Types:
 
 - <code><a href="./src/resources/agents/agents.ts">AgentCreateResponse</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentRetrieveResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentUpdateResponse</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentListResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/agent/">client.agents.<a href="./src/resources/agents/agents.ts">create</a>({ ...params }) -> AgentCreateResponse</code>
 - <code title="get /api/v1/agent/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">retrieve</a>(agentId, { ...params }) -> AgentRetrieveResponse</code>
+- <code title="patch /api/v1/agent/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">update</a>(agentId, { ...params }) -> AgentUpdateResponse</code>
 - <code title="get /api/v1/agent/">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentListResponse</code>
 
 ## Tasks
@@ -39,10 +41,14 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/agents/tasks.ts">TaskCreateResponse</a></code>
+- <code><a href="./src/resources/agents/tasks.ts">TaskRetrieveResponse</a></code>
+- <code><a href="./src/resources/agents/tasks.ts">TaskListResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/agent/{agentId}/task">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
+- <code title="get /api/v1/task/{taskId}">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">retrieve</a>(taskId, { ...params }) -> TaskRetrieveResponse</code>
+- <code title="get /api/v1/task/">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">list</a>({ ...params }) -> TaskListResponse</code>
 
 ## Schema
 
@@ -56,6 +62,7 @@ Types:
 - <code><a href="./src/resources/submissions/submissions.ts">SubmissionListResponse</a></code>
 - <code><a href="./src/resources/submissions/submissions.ts">SubmissionFinalizeResponse</a></code>
 - <code><a href="./src/resources/submissions/submissions.ts">SubmissionProgressResponse</a></code>
+- <code><a href="./src/resources/submissions/submissions.ts">SubmissionReviewResponse</a></code>
 - <code><a href="./src/resources/submissions/submissions.ts">SubmissionUploadResponse</a></code>
 
 Methods:
@@ -64,6 +71,7 @@ Methods:
 - <code title="get /api/v1/submission/">client.submissions.<a href="./src/resources/submissions/submissions.ts">list</a>({ ...params }) -> SubmissionListResponse</code>
 - <code title="get /api/v1/submission/{submissionId}/finalize">client.submissions.<a href="./src/resources/submissions/submissions.ts">finalize</a>(submissionId, { ...params }) -> SubmissionFinalizeResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions/submissions.ts">progress</a>(submissionId, { ...params }) -> SubmissionProgressResponse</code>
+- <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions/submissions.ts">review</a>(submissionId, { ...params }) -> SubmissionReviewResponse</code>
 - <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions/submissions.ts">upload</a>(submissionId, { ...params }) -> SubmissionUploadResponse</code>
 
 ## Examples

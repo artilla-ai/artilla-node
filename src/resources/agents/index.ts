@@ -3,11 +3,21 @@
 export {
   AgentCreateResponse,
   AgentRetrieveResponse,
+  AgentUpdateResponse,
   AgentListResponse,
   AgentCreateParams,
   AgentRetrieveParams,
+  AgentUpdateParams,
   AgentListParams,
   Agents,
 } from './agents';
 export { Schema } from './schema';
-export { TaskCreateResponse, TaskCreateParams, Tasks } from './tasks';
+export {
+  TaskCreateResponse,
+  TaskRetrieveResponse,
+  TaskListResponse,
+  TaskCreateParams,
+  TaskRetrieveParams,
+  TaskListParams,
+  Tasks,
+} from './tasks';

@@ -56,6 +56,35 @@ export class Agents extends APIResource {
   }
 
   /**
+   * Update an agent's settings
+   */
+  update(
+    agentId: string,
+    params?: AgentUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentUpdateResponse>;
+  update(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentUpdateResponse>;
+  update(
+    agentId: string,
+    params: AgentUpdateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentUpdateResponse> {
+    if (isRequestOptions(params)) {
+      return this.update(agentId, {}, params);
+    }
+    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
+    return this._client.patch(`/api/v1/agent/${agentId}`, {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
+  }
+
+  /**
    * Lists agents
    */
   list(params?: AgentListParams, options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>;
@@ -196,6 +225,10 @@ export namespace AgentRetrieveResponse {
   }
 }
 
+export interface AgentUpdateResponse {
+  success: boolean;
+}
+
 export interface AgentListResponse {
   agents: Array<AgentListResponse.Agent>;
 
@@ -303,6 +336,43 @@ export interface AgentRetrieveParams {
   'x-api-key'?: string;
 }
 
+export interface AgentUpdateParams {
+  /**
+   * Body param:
+   */
+  inputSchema?: Record<string, unknown>;
+
+  /**
+   * Body param:
+   */
+  price?: number;
+
+  /**
+   * Body param:
+   */
+  uiSchema?: Record<string, unknown>;
+
+  /**
+   * Body param:
+   */
+  visibility?: 'public' | 'private';
+
+  /**
+   * Body param:
+   */
+  webhookUrl?: string;
+
+  /**
+   * Header param: This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * Header param: A valid API key
+   */
+  'x-api-key'?: string;
+}
+
 export interface AgentListParams {
   /**
    * Query param:
@@ -328,12 +398,18 @@ export interface AgentListParams {
 export namespace Agents {
   export import AgentCreateResponse = AgentsAPI.AgentCreateResponse;
   export import AgentRetrieveResponse = AgentsAPI.AgentRetrieveResponse;
+  export import AgentUpdateResponse = AgentsAPI.AgentUpdateResponse;
   export import AgentListResponse = AgentsAPI.AgentListResponse;
   export import AgentCreateParams = AgentsAPI.AgentCreateParams;
   export import AgentRetrieveParams = AgentsAPI.AgentRetrieveParams;
+  export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
   export import AgentListParams = AgentsAPI.AgentListParams;
   export import Tasks = TasksAPI.Tasks;
   export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
+  export import TaskRetrieveResponse = TasksAPI.TaskRetrieveResponse;
+  export import TaskListResponse = TasksAPI.TaskListResponse;
   export import TaskCreateParams = TasksAPI.TaskCreateParams;
+  export import TaskRetrieveParams = TasksAPI.TaskRetrieveParams;
+  export import TaskListParams = TasksAPI.TaskListParams;
   export import Schema = SchemaAPI.Schema;
 }

@@ -167,9 +167,11 @@ export namespace Artilla {
   export import Agents = API.Agents;
   export import AgentCreateResponse = API.AgentCreateResponse;
   export import AgentRetrieveResponse = API.AgentRetrieveResponse;
+  export import AgentUpdateResponse = API.AgentUpdateResponse;
   export import AgentListResponse = API.AgentListResponse;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentRetrieveParams = API.AgentRetrieveParams;
+  export import AgentUpdateParams = API.AgentUpdateParams;
   export import AgentListParams = API.AgentListParams;
 
   export import Proposals = API.Proposals;
@@ -179,11 +181,13 @@ export namespace Artilla {
   export import SubmissionListResponse = API.SubmissionListResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = API.SubmissionProgressResponse;
+  export import SubmissionReviewResponse = API.SubmissionReviewResponse;
   export import SubmissionUploadResponse = API.SubmissionUploadResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
   export import SubmissionListParams = API.SubmissionListParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
   export import SubmissionProgressParams = API.SubmissionProgressParams;
+  export import SubmissionReviewParams = API.SubmissionReviewParams;
   export import SubmissionUploadParams = API.SubmissionUploadParams;
 
   export import Workspaces = API.Workspaces;

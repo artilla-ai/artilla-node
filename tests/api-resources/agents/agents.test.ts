@@ -64,6 +64,43 @@ describe('resource agents', () => {
     ).rejects.toThrow(Artilla.NotFoundError);
   });
 
+  test('update', async () => {
+    const responsePromise = client.agents.update('agentId');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('update: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.agents.update('agentId', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Artilla.NotFoundError,
+    );
+  });
+
+  test('update: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.agents.update(
+        'agentId',
+        {
+          inputSchema: { foo: 'bar' },
+          price: 50,
+          uiSchema: { foo: 'bar' },
+          visibility: 'public',
+          webhookUrl: 'webhookUrl',
+          authorization: 'authorization',
+          'x-api-key': 'x-api-key',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Artilla.NotFoundError);
+  });
+
   test('list', async () => {
     const responsePromise = client.agents.list();
     const rawResponse = await responsePromise.asResponse();
