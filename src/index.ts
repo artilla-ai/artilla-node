@@ -185,10 +185,8 @@ export namespace Artilla {
   export import Users = API.Users;
   export import UserMeResponse = API.UserMeResponse;
   export import UserOnboardingResponse = API.UserOnboardingResponse;
-  export import UserReferralResponse = API.UserReferralResponse;
   export import UserMeParams = API.UserMeParams;
   export import UserOnboardingParams = API.UserOnboardingParams;
-  export import UserReferralParams = API.UserReferralParams;
 
   export import Agents = API.Agents;
   export import AgentCreateResponse = API.AgentCreateResponse;
@@ -209,13 +207,13 @@ export namespace Artilla {
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
+  export import SubmissionProgressResponse = API.SubmissionProgressResponse;
   export import SubmissionReviewResponse = API.SubmissionReviewResponse;
-  export import SubmissionSetProgressResponse = API.SubmissionSetProgressResponse;
   export import SubmissionUploadResponse = API.SubmissionUploadResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
+  export import SubmissionProgressParams = API.SubmissionProgressParams;
   export import SubmissionReviewParams = API.SubmissionReviewParams;
-  export import SubmissionSetProgressParams = API.SubmissionSetProgressParams;
   export import SubmissionUploadParams = API.SubmissionUploadParams;
 }
 

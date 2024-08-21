@@ -54,6 +54,26 @@ describe('resource submissions', () => {
     ).rejects.toThrow(Artilla.NotFoundError);
   });
 
+  test('progress: only required params', async () => {
+    const responsePromise = client.submissions.progress('submissionId', { progressPercent: 0, text: 'text' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('progress: required and optional params', async () => {
+    const response = await client.submissions.progress('submissionId', {
+      progressPercent: 0,
+      text: 'text',
+      authorization: 'authorization',
+      'x-api-key': 'x-api-key',
+    });
+  });
+
   test('review: only required params', async () => {
     const responsePromise = client.submissions.review('submissionId', {
       comment: 'comment',
@@ -76,29 +96,6 @@ describe('resource submissions', () => {
       rating: 0,
       fileComments: { foo: 'string' },
       fileRatings: { foo: 0 },
-      authorization: 'authorization',
-      'x-api-key': 'x-api-key',
-    });
-  });
-
-  test('setProgress: only required params', async () => {
-    const responsePromise = client.submissions.setProgress('submissionId', {
-      progressPercent: 0,
-      text: 'text',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('setProgress: required and optional params', async () => {
-    const response = await client.submissions.setProgress('submissionId', {
-      progressPercent: 0,
-      text: 'text',
       authorization: 'authorization',
       'x-api-key': 'x-api-key',
     });
