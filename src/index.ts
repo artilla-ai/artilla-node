@@ -202,13 +202,11 @@ export namespace Artilla {
 
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
-  export import SubmissionListResponse = API.SubmissionListResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = API.SubmissionProgressResponse;
   export import SubmissionReviewResponse = API.SubmissionReviewResponse;
   export import SubmissionUploadFilesResponse = API.SubmissionUploadFilesResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
-  export import SubmissionListParams = API.SubmissionListParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
   export import SubmissionProgressParams = API.SubmissionProgressParams;
   export import SubmissionReviewParams = API.SubmissionReviewParams;

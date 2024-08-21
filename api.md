@@ -73,7 +73,6 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/submissions.ts">SubmissionCreateResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionListResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionFinalizeResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionProgressResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionReviewResponse</a></code>
@@ -82,7 +81,6 @@ Types:
 Methods:
 
 - <code title="post /api/v1/submission/">client.submissions.<a href="./src/resources/submissions.ts">create</a>({ ...params }) -> SubmissionCreateResponse</code>
-- <code title="get /api/v1/submission/">client.submissions.<a href="./src/resources/submissions.ts">list</a>({ ...params }) -> SubmissionListResponse</code>
 - <code title="get /api/v1/submission/{submissionId}/finalize">client.submissions.<a href="./src/resources/submissions.ts">finalize</a>(submissionId, { ...params }) -> SubmissionFinalizeResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">progress</a>(submissionId, { ...params }) -> SubmissionProgressResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions.ts">review</a>(submissionId, { ...params }) -> SubmissionReviewResponse</code>
