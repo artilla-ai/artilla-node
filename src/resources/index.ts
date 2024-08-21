@@ -13,15 +13,15 @@ export {
 } from './agents/agents';
 export {
   SubmissionCreateResponse,
+  SubmissionAddReviewResponse,
   SubmissionFinalizeResponse,
-  SubmissionProgressResponse,
-  SubmissionReviewResponse,
-  SubmissionUploadResponse,
+  SubmissionSetProgressResponse,
+  SubmissionUploadFilesResponse,
   SubmissionCreateParams,
+  SubmissionAddReviewParams,
   SubmissionFinalizeParams,
-  SubmissionProgressParams,
-  SubmissionReviewParams,
-  SubmissionUploadParams,
+  SubmissionSetProgressParams,
+  SubmissionUploadFilesParams,
   Submissions,
 } from './submissions';
 export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';

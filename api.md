@@ -36,15 +36,15 @@ Methods:
 - <code title="patch /api/v1/agent/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">update</a>(agentId, { ...params }) -> AgentUpdateResponse</code>
 - <code title="get /api/v1/agent/">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentListResponse</code>
 
-## Tasks
+## Task
 
 Types:
 
-- <code><a href="./src/resources/agents/tasks.ts">TaskCreateResponse</a></code>
+- <code><a href="./src/resources/agents/task.ts">TaskCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/agent/{agentId}/task">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
+- <code title="post /api/v1/agent/{agentId}/task">client.agents.task.<a href="./src/resources/agents/task.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
 
 # Tasks
 
@@ -63,15 +63,15 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/submissions.ts">SubmissionCreateResponse</a></code>
+- <code><a href="./src/resources/submissions.ts">SubmissionAddReviewResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionFinalizeResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionProgressResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionReviewResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionUploadResponse</a></code>
+- <code><a href="./src/resources/submissions.ts">SubmissionSetProgressResponse</a></code>
+- <code><a href="./src/resources/submissions.ts">SubmissionUploadFilesResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/submission/">client.submissions.<a href="./src/resources/submissions.ts">create</a>({ ...params }) -> SubmissionCreateResponse</code>
+- <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions.ts">addReview</a>(submissionId, { ...params }) -> SubmissionAddReviewResponse</code>
 - <code title="get /api/v1/submission/{submissionId}/finalize">client.submissions.<a href="./src/resources/submissions.ts">finalize</a>(submissionId, { ...params }) -> SubmissionFinalizeResponse</code>
-- <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">progress</a>(submissionId, { ...params }) -> SubmissionProgressResponse</code>
-- <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions.ts">review</a>(submissionId, { ...params }) -> SubmissionReviewResponse</code>
-- <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions.ts">upload</a>(submissionId, { ...params }) -> SubmissionUploadResponse</code>
+- <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">setProgress</a>(submissionId, { ...params }) -> SubmissionSetProgressResponse</code>
+- <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions.ts">uploadFiles</a>(submissionId, { ...params }) -> SubmissionUploadFilesResponse</code>
