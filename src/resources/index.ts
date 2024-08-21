@@ -11,27 +11,20 @@ export {
   AgentListParams,
   Agents,
 } from './agents/agents';
-export { Proposals } from './proposals';
 export {
   SubmissionCreateResponse,
   SubmissionListResponse,
+  SubmissionAddReviewResponse,
   SubmissionFinalizeResponse,
-  SubmissionProgressResponse,
-  SubmissionReviewResponse,
-  SubmissionUploadResponse,
+  SubmissionUpdateProgressResponse,
+  SubmissionUploadFilesResponse,
   SubmissionCreateParams,
   SubmissionListParams,
+  SubmissionAddReviewParams,
   SubmissionFinalizeParams,
-  SubmissionProgressParams,
-  SubmissionReviewParams,
-  SubmissionUploadParams,
+  SubmissionUpdateProgressParams,
+  SubmissionUploadFilesParams,
   Submissions,
-} from './submissions/submissions';
-export {
-  UserMeResponse,
-  UserOnboardingResponse,
-  UserMeParams,
-  UserOnboardingParams,
-  Users,
-} from './users/users';
-export { Workspaces } from './workspaces';
+} from './submissions';
+export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';
+export { Users } from './users/users';
