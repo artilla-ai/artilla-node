@@ -28,7 +28,9 @@ export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListPar
 export {
   UserMeResponse,
   UserOnboardingResponse,
+  UserReferralResponse,
   UserMeParams,
   UserOnboardingParams,
+  UserReferralParams,
   Users,
-} from './users/users';
+} from './users';

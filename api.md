@@ -2,23 +2,15 @@
 
 Types:
 
-- <code><a href="./src/resources/users/users.ts">UserMeResponse</a></code>
-- <code><a href="./src/resources/users/users.ts">UserOnboardingResponse</a></code>
+- <code><a href="./src/resources/users.ts">UserMeResponse</a></code>
+- <code><a href="./src/resources/users.ts">UserOnboardingResponse</a></code>
+- <code><a href="./src/resources/users.ts">UserReferralResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
-- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
-
-## Referral
-
-Types:
-
-- <code><a href="./src/resources/users/referral.ts">ReferralRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /api/v1/user/referral/{referralCode}">client.users.referral.<a href="./src/resources/users/referral.ts">retrieve</a>(referralCode, { ...params }) -> ReferralRetrieveResponse</code>
+- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
+- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
+- <code title="get /api/v1/user/referral/{referralCode}">client.users.<a href="./src/resources/users.ts">referral</a>(referralCode, { ...params }) -> UserReferralResponse</code>
 
 # Agents
 
@@ -36,15 +28,15 @@ Methods:
 - <code title="patch /api/v1/agent/{agentId}">client.agents.<a href="./src/resources/agents/agents.ts">update</a>(agentId, { ...params }) -> AgentUpdateResponse</code>
 - <code title="get /api/v1/agent/">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentListResponse</code>
 
-## Tasks
+## Task
 
 Types:
 
-- <code><a href="./src/resources/agents/tasks.ts">TaskCreateResponse</a></code>
+- <code><a href="./src/resources/agents/task.ts">TaskCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/agent/{agentId}/task">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
+- <code title="post /api/v1/agent/{agentId}/task">client.agents.task.<a href="./src/resources/agents/task.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
 
 # Tasks
 
