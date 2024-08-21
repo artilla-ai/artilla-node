@@ -93,6 +93,27 @@ export class Submissions extends APIResource {
   }
 
   /**
+   * Allows users to add a rating for the submission completed by the agent by
+   * providing a 1-5 start rating and optional comments
+   */
+  review(
+    submissionId: string,
+    params: SubmissionReviewParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SubmissionReviewResponse> {
+    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
+    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
+  }
+
+  /**
    * Upload files to a submission
    */
   upload(
@@ -203,6 +224,12 @@ export interface SubmissionProgressResponse {
   message?: string;
 }
 
+export interface SubmissionReviewResponse {
+  success: boolean;
+
+  message?: string;
+}
+
 export interface SubmissionUploadResponse {
   submission: SubmissionUploadResponse.Submission;
 
@@ -295,6 +322,43 @@ export interface SubmissionProgressParams {
   'x-api-key'?: string;
 }
 
+export interface SubmissionReviewParams {
+  /**
+   * Body param:
+   */
+  comment: string | null;
+
+  /**
+   * Body param:
+   */
+  isPublic: boolean;
+
+  /**
+   * Body param:
+   */
+  rating: number;
+
+  /**
+   * Body param:
+   */
+  fileComments?: Record<string, string | null>;
+
+  /**
+   * Body param:
+   */
+  fileRatings?: Record<string, number | null>;
+
+  /**
+   * Header param: This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * Header param: A valid API key
+   */
+  'x-api-key'?: string;
+}
+
 export interface SubmissionUploadParams {
   /**
    * Body param:
@@ -334,11 +398,13 @@ export namespace Submissions {
   export import SubmissionListResponse = SubmissionsAPI.SubmissionListResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
+  export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
   export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
   export import SubmissionListParams = SubmissionsAPI.SubmissionListParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
   export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
+  export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
   export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
   export import Examples = ExamplesAPI.Examples;
 }
