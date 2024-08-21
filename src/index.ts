@@ -116,6 +116,7 @@ export class Artilla extends Core.APIClient {
   }
 
   static Artilla = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static ArtillaError = Errors.ArtillaError;
   static APIError = Errors.APIError;
@@ -167,40 +168,25 @@ export namespace Artilla {
   export import AgentCreateResponse = API.AgentCreateResponse;
   export import AgentRetrieveResponse = API.AgentRetrieveResponse;
   export import AgentListResponse = API.AgentListResponse;
-  export import AgentPayResponse = API.AgentPayResponse;
-  export import AgentPublishResponse = API.AgentPublishResponse;
-  export import AgentWebhookResponse = API.AgentWebhookResponse;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentRetrieveParams = API.AgentRetrieveParams;
   export import AgentListParams = API.AgentListParams;
-  export import AgentPayParams = API.AgentPayParams;
-  export import AgentPublishParams = API.AgentPublishParams;
-  export import AgentWebhookParams = API.AgentWebhookParams;
 
   export import Proposals = API.Proposals;
-  export import ProposalRetrieveResponse = API.ProposalRetrieveResponse;
-  export import ProposalRetrieveParams = API.ProposalRetrieveParams;
 
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
   export import SubmissionListResponse = API.SubmissionListResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = API.SubmissionProgressResponse;
-  export import SubmissionRatingResponse = API.SubmissionRatingResponse;
   export import SubmissionUploadResponse = API.SubmissionUploadResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
   export import SubmissionListParams = API.SubmissionListParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
   export import SubmissionProgressParams = API.SubmissionProgressParams;
-  export import SubmissionRatingParams = API.SubmissionRatingParams;
   export import SubmissionUploadParams = API.SubmissionUploadParams;
 
   export import Workspaces = API.Workspaces;
-  export import WorkspaceRetrieveResponse = API.WorkspaceRetrieveResponse;
-  export import WorkspaceListResponse = API.WorkspaceListResponse;
-  export import WorkspaceRetrieveParams = API.WorkspaceRetrieveParams;
-  export import WorkspaceListParams = API.WorkspaceListParams;
-  export import WorkspaceWatchParams = API.WorkspaceWatchParams;
 }
 
 export default Artilla;

@@ -93,27 +93,6 @@ export class Submissions extends APIResource {
   }
 
   /**
-   * Allows users to add a rating for the submission completed by the agent by
-   * providing a 1-5 start rating and optional comments
-   */
-  rating(
-    submissionId: string,
-    params: SubmissionRatingParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionRatingResponse> {
-    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/submission/${submissionId}/rating`, {
-      body,
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
-  }
-
-  /**
    * Upload files to a submission
    */
   upload(
@@ -224,12 +203,6 @@ export interface SubmissionProgressResponse {
   message?: string;
 }
 
-export interface SubmissionRatingResponse {
-  success: boolean;
-
-  message?: string;
-}
-
 export interface SubmissionUploadResponse {
   submission: SubmissionUploadResponse.Submission;
 
@@ -251,7 +224,7 @@ export interface SubmissionCreateParams {
   proposalId: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -278,7 +251,7 @@ export interface SubmissionListParams {
   workspaceOwnerId: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -290,7 +263,7 @@ export interface SubmissionListParams {
 
 export interface SubmissionFinalizeParams {
   /**
-   * A valid JWT token
+   * This is your JWT tolen
    */
   authorization?: string;
 
@@ -312,39 +285,7 @@ export interface SubmissionProgressParams {
   text: string;
 
   /**
-   * Header param: A valid JWT token
-   */
-  authorization?: string;
-
-  /**
-   * Header param: A valid API key
-   */
-  'x-api-key'?: string;
-}
-
-export interface SubmissionRatingParams {
-  /**
-   * Body param:
-   */
-  comment: string | null;
-
-  /**
-   * Body param:
-   */
-  rating: number;
-
-  /**
-   * Body param:
-   */
-  fileComments?: Record<string, string | null>;
-
-  /**
-   * Body param:
-   */
-  fileRatings?: Record<string, number | null>;
-
-  /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -366,7 +307,7 @@ export interface SubmissionUploadParams {
   message: string;
 
   /**
-   * Header param: A valid JWT token
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -393,15 +334,11 @@ export namespace Submissions {
   export import SubmissionListResponse = SubmissionsAPI.SubmissionListResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
-  export import SubmissionRatingResponse = SubmissionsAPI.SubmissionRatingResponse;
   export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
   export import SubmissionListParams = SubmissionsAPI.SubmissionListParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
   export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
-  export import SubmissionRatingParams = SubmissionsAPI.SubmissionRatingParams;
   export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
   export import Examples = ExamplesAPI.Examples;
-  export import ExampleRetrieveResponse = ExamplesAPI.ExampleRetrieveResponse;
-  export import ExampleRetrieveParams = ExamplesAPI.ExampleRetrieveParams;
 }

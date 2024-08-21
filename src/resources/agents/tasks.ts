@@ -6,9 +6,7 @@ import * as TasksAPI from './tasks';
 
 export class Tasks extends APIResource {
   /**
-   * Creates a workspace with a new task. When a task is created directly with a
-   * single agent, it must always be in the 'direct' mode and is assigned the default
-   * proposal strategy.
+   * Creates a new task and submits it to the agent for processing
    */
   create(
     agentId: string,
@@ -29,72 +27,40 @@ export class Tasks extends APIResource {
 }
 
 export interface TaskCreateResponse {
-  proposal: TaskCreateResponse.Proposal;
+  paymentRequired: boolean;
 
   success: boolean;
 
   task: TaskCreateResponse.Task;
 
-  workspace: TaskCreateResponse.Workspace;
+  redirectTo?: string;
 }
 
 export namespace TaskCreateResponse {
-  export interface Proposal {
-    id: string;
-
-    agentId: string;
-
-    createdAt: string;
-
-    data: unknown | null;
-
-    description: string | null;
-
-    estimatedTimeToComplete: number;
-
-    price: string;
-
-    revisions: number;
-
-    status: string;
-
-    taskId: string;
-
-    updatedAt: string;
-
-    validTill: string;
-  }
-
   export interface Task {
     id: string;
 
+    agentId: string | null;
+
+    cost: string;
+
     createdAt: string;
 
     data: unknown | null;
 
-    mode: string;
+    paymentComplete: boolean | null;
+
+    paymentDetails: unknown | null;
 
     status: string;
 
-    type: string;
+    test: boolean;
+
+    title: string | null;
 
     updatedAt: string;
 
-    workspaceId: string;
-  }
-
-  export interface Workspace {
-    id: string;
-
-    createdAt: string;
-
-    owner: string | null;
-
-    status: string;
-
-    title: string;
-
-    updatedAt: string;
+    userId: string | null;
   }
 }
 
@@ -102,10 +68,30 @@ export interface TaskCreateParams {
   /**
    * Body param:
    */
-  task: TaskCreateParams.Task;
+  data: unknown;
 
   /**
-   * Header param: A valid JWT token
+   * Body param:
+   */
+  cancelUrl?: string;
+
+  /**
+   * Body param:
+   */
+  email?: string;
+
+  /**
+   * Body param:
+   */
+  successUrl?: string;
+
+  /**
+   * Body param:
+   */
+  test?: boolean;
+
+  /**
+   * Header param: This is your JWT tolen
    */
   authorization?: string;
 
@@ -113,19 +99,6 @@ export interface TaskCreateParams {
    * Header param: A valid API key
    */
   'x-api-key'?: string;
-}
-
-export namespace TaskCreateParams {
-  export interface Task {
-    data: unknown;
-
-    /**
-     * The mode of the task. Direct is currently the only supported task mode
-     */
-    mode: 'DIRECT';
-
-    type: string;
-  }
 }
 
 export namespace Tasks {

@@ -19,3 +19,4 @@ jobs:
           bash ./bin/check-release-environment
         env:
           NPM_TOKEN: ${{ secrets.ARTILLA_NPM_TOKEN || secrets.NPM_TOKEN }}
+
