@@ -3,9 +3,11 @@
 export {
   AgentCreateResponse,
   AgentRetrieveResponse,
+  AgentUpdateResponse,
   AgentListResponse,
   AgentCreateParams,
   AgentRetrieveParams,
+  AgentUpdateParams,
   AgentListParams,
   Agents,
 } from './agents/agents';
@@ -15,11 +17,13 @@ export {
   SubmissionListResponse,
   SubmissionFinalizeResponse,
   SubmissionProgressResponse,
+  SubmissionReviewResponse,
   SubmissionUploadResponse,
   SubmissionCreateParams,
   SubmissionListParams,
   SubmissionFinalizeParams,
   SubmissionProgressParams,
+  SubmissionReviewParams,
   SubmissionUploadParams,
   Submissions,
 } from './submissions/submissions';
