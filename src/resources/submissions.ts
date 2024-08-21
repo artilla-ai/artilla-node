@@ -26,6 +26,27 @@ export class Submissions extends APIResource {
   }
 
   /**
+   * Allows users to add a rating for the submission completed by the agent by
+   * providing a 1-5 start rating and optional comments
+   */
+  addReview(
+    submissionId: string,
+    params: SubmissionAddReviewParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SubmissionAddReviewResponse> {
+    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
+    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
+  }
+
+  /**
    * Upload files to a submission
    */
   finalize(
@@ -44,27 +65,6 @@ export class Submissions extends APIResource {
     }
     const { authorization, 'x-api-key': xAPIKey } = params;
     return this._client.get(`/api/v1/submission/${submissionId}/finalize`, {
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
-  }
-
-  /**
-   * Allows users to add a rating for the submission completed by the agent by
-   * providing a 1-5 start rating and optional comments
-   */
-  review(
-    submissionId: string,
-    params: SubmissionReviewParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionReviewResponse> {
-    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
-      body,
       ...options,
       headers: {
         ...(authorization != null ? { authorization: authorization } : undefined),
@@ -97,11 +97,11 @@ export class Submissions extends APIResource {
   /**
    * Upload files to a submission
    */
-  upload(
+  uploadFiles(
     submissionId: string,
-    params: SubmissionUploadParams,
+    params: SubmissionUploadFilesParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionUploadResponse> {
+  ): Core.APIPromise<SubmissionUploadFilesResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
     return this._client.post(`/api/v1/submission/${submissionId}`, {
       body,
@@ -129,14 +129,14 @@ export namespace SubmissionCreateResponse {
   }
 }
 
-export interface SubmissionFinalizeResponse {
-  success: boolean;
-}
-
-export interface SubmissionReviewResponse {
+export interface SubmissionAddReviewResponse {
   success: boolean;
 
   message?: string;
+}
+
+export interface SubmissionFinalizeResponse {
+  success: boolean;
 }
 
 export interface SubmissionSetProgressResponse {
@@ -145,13 +145,13 @@ export interface SubmissionSetProgressResponse {
   message?: string;
 }
 
-export interface SubmissionUploadResponse {
-  submission: SubmissionUploadResponse.Submission;
+export interface SubmissionUploadFilesResponse {
+  submission: SubmissionUploadFilesResponse.Submission;
 
   success: boolean;
 }
 
-export namespace SubmissionUploadResponse {
+export namespace SubmissionUploadFilesResponse {
   export interface Submission {
     id: string;
 
@@ -176,19 +176,7 @@ export interface SubmissionCreateParams {
   'x-api-key'?: string;
 }
 
-export interface SubmissionFinalizeParams {
-  /**
-   * This is your JWT tolen
-   */
-  authorization?: string;
-
-  /**
-   * A valid API key
-   */
-  'x-api-key'?: string;
-}
-
-export interface SubmissionReviewParams {
+export interface SubmissionAddReviewParams {
   /**
    * Body param:
    */
@@ -225,6 +213,18 @@ export interface SubmissionReviewParams {
   'x-api-key'?: string;
 }
 
+export interface SubmissionFinalizeParams {
+  /**
+   * This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * A valid API key
+   */
+  'x-api-key'?: string;
+}
+
 export interface SubmissionSetProgressParams {
   /**
    * Body param:
@@ -247,11 +247,11 @@ export interface SubmissionSetProgressParams {
   'x-api-key'?: string;
 }
 
-export interface SubmissionUploadParams {
+export interface SubmissionUploadFilesParams {
   /**
    * Body param:
    */
-  files: Array<SubmissionUploadParams.File>;
+  files: Array<SubmissionUploadFilesParams.File>;
 
   /**
    * Body param:
@@ -269,7 +269,7 @@ export interface SubmissionUploadParams {
   'x-api-key'?: string;
 }
 
-export namespace SubmissionUploadParams {
+export namespace SubmissionUploadFilesParams {
   export interface File {
     contentType: string;
 
@@ -283,13 +283,13 @@ export namespace SubmissionUploadParams {
 
 export namespace Submissions {
   export import SubmissionCreateResponse = SubmissionsAPI.SubmissionCreateResponse;
+  export import SubmissionAddReviewResponse = SubmissionsAPI.SubmissionAddReviewResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
-  export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
   export import SubmissionSetProgressResponse = SubmissionsAPI.SubmissionSetProgressResponse;
-  export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
+  export import SubmissionUploadFilesResponse = SubmissionsAPI.SubmissionUploadFilesResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
+  export import SubmissionAddReviewParams = SubmissionsAPI.SubmissionAddReviewParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
-  export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
   export import SubmissionSetProgressParams = SubmissionsAPI.SubmissionSetProgressParams;
-  export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
+  export import SubmissionUploadFilesParams = SubmissionsAPI.SubmissionUploadFilesParams;
 }

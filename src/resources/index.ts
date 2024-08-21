@@ -13,24 +13,22 @@ export {
 } from './agents/agents';
 export {
   SubmissionCreateResponse,
+  SubmissionAddReviewResponse,
   SubmissionFinalizeResponse,
-  SubmissionReviewResponse,
   SubmissionSetProgressResponse,
-  SubmissionUploadResponse,
+  SubmissionUploadFilesResponse,
   SubmissionCreateParams,
+  SubmissionAddReviewParams,
   SubmissionFinalizeParams,
-  SubmissionReviewParams,
   SubmissionSetProgressParams,
-  SubmissionUploadParams,
+  SubmissionUploadFilesParams,
   Submissions,
 } from './submissions';
 export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';
 export {
   UserMeResponse,
   UserOnboardingResponse,
-  UserReferralResponse,
   UserMeParams,
   UserOnboardingParams,
-  UserReferralParams,
   Users,
-} from './users';
+} from './users/users';
