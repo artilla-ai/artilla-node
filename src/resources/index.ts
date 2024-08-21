@@ -14,15 +14,23 @@ export {
 export {
   SubmissionCreateResponse,
   SubmissionFinalizeResponse,
-  SubmissionProgressResponse,
   SubmissionReviewResponse,
+  SubmissionSetProgressResponse,
   SubmissionUploadResponse,
   SubmissionCreateParams,
   SubmissionFinalizeParams,
-  SubmissionProgressParams,
   SubmissionReviewParams,
+  SubmissionSetProgressParams,
   SubmissionUploadParams,
   Submissions,
 } from './submissions';
 export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';
-export { Users } from './users/users';
+export {
+  UserMeResponse,
+  UserOnboardingResponse,
+  UserReferralResponse,
+  UserMeParams,
+  UserOnboardingParams,
+  UserReferralParams,
+  Users,
+} from './users';

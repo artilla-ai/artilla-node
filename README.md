@@ -11,8 +11,11 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install artilla
+npm install git+ssh://git@github.com:stainless-sdks/artilla-node.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install artilla`
 
 ## Usage
 
@@ -27,9 +30,9 @@ const client = new Artilla({
 });
 
 async function main() {
-  const meRetrieveResponse = await client.users.me.retrieve();
+  const userMeResponse = await client.users.me();
 
-  console.log(meRetrieveResponse.agents);
+  console.log(userMeResponse.agents);
 }
 
 main();
@@ -48,7 +51,7 @@ const client = new Artilla({
 });
 
 async function main() {
-  const meRetrieveResponse: Artilla.Users.MeRetrieveResponse = await client.users.me.retrieve();
+  const userMeResponse: Artilla.UserMeResponse = await client.users.me();
 }
 
 main();
@@ -65,7 +68,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const meRetrieveResponse = await client.users.me.retrieve().catch(async (err) => {
+  const userMeResponse = await client.users.me().catch(async (err) => {
     if (err instanceof Artilla.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -108,7 +111,7 @@ const client = new Artilla({
 });
 
 // Or, configure per-request:
-await client.users.me.retrieve({
+await client.users.me({
   maxRetries: 5,
 });
 ```
@@ -125,7 +128,7 @@ const client = new Artilla({
 });
 
 // Override per-request:
-await client.users.me.retrieve({
+await client.users.me({
   timeout: 5 * 1000,
 });
 ```
@@ -146,13 +149,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Artilla();
 
-const response = await client.users.me.retrieve().asResponse();
+const response = await client.users.me().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: meRetrieveResponse, response: raw } = await client.users.me.retrieve().withResponse();
+const { data: userMeResponse, response: raw } = await client.users.me().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(meRetrieveResponse.agents);
+console.log(userMeResponse.agents);
 ```
 
 ### Making custom/undocumented requests
@@ -215,7 +218,7 @@ import Artilla from 'artilla';
 ```
 
 To do the inverse, add `import "artilla/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/artilla-ai/artilla-node/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/artilla-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -256,7 +259,7 @@ const client = new Artilla({
 });
 
 // Override per-request:
-await client.users.me.retrieve({
+await client.users.me({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
@@ -271,7 +274,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/artilla-ai/artilla-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/artilla-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
