@@ -25,6 +25,33 @@ describe('resource submissions', () => {
     });
   });
 
+  test('addReview: only required params', async () => {
+    const responsePromise = client.submissions.addReview('submissionId', {
+      comment: 'comment',
+      isPublic: true,
+      rating: 0,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('addReview: required and optional params', async () => {
+    const response = await client.submissions.addReview('submissionId', {
+      comment: 'comment',
+      isPublic: true,
+      rating: 0,
+      fileComments: { foo: 'string' },
+      fileRatings: { foo: 0 },
+      authorization: 'authorization',
+      'x-api-key': 'x-api-key',
+    });
+  });
+
   test('finalize', async () => {
     const responsePromise = client.submissions.finalize('submissionId');
     const rawResponse = await responsePromise.asResponse();
@@ -54,8 +81,11 @@ describe('resource submissions', () => {
     ).rejects.toThrow(Artilla.NotFoundError);
   });
 
-  test('progress: only required params', async () => {
-    const responsePromise = client.submissions.progress('submissionId', { progressPercent: 0, text: 'text' });
+  test('setProgress: only required params', async () => {
+    const responsePromise = client.submissions.setProgress('submissionId', {
+      progressPercent: 0,
+      text: 'text',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -65,8 +95,8 @@ describe('resource submissions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('progress: required and optional params', async () => {
-    const response = await client.submissions.progress('submissionId', {
+  test('setProgress: required and optional params', async () => {
+    const response = await client.submissions.setProgress('submissionId', {
       progressPercent: 0,
       text: 'text',
       authorization: 'authorization',
@@ -74,35 +104,8 @@ describe('resource submissions', () => {
     });
   });
 
-  test('review: only required params', async () => {
-    const responsePromise = client.submissions.review('submissionId', {
-      comment: 'comment',
-      isPublic: true,
-      rating: 0,
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('review: required and optional params', async () => {
-    const response = await client.submissions.review('submissionId', {
-      comment: 'comment',
-      isPublic: true,
-      rating: 0,
-      fileComments: { foo: 'string' },
-      fileRatings: { foo: 0 },
-      authorization: 'authorization',
-      'x-api-key': 'x-api-key',
-    });
-  });
-
-  test('upload: only required params', async () => {
-    const responsePromise = client.submissions.upload('submissionId', {
+  test('uploadFiles: only required params', async () => {
+    const responsePromise = client.submissions.uploadFiles('submissionId', {
       files: [
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
@@ -119,8 +122,8 @@ describe('resource submissions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('upload: required and optional params', async () => {
-    const response = await client.submissions.upload('submissionId', {
+  test('uploadFiles: required and optional params', async () => {
+    const response = await client.submissions.uploadFiles('submissionId', {
       files: [
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
         { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },

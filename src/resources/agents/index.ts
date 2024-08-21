@@ -11,4 +11,4 @@ export {
   AgentListParams,
   Agents,
 } from './agents';
-export { TaskCreateResponse, TaskCreateParams, Tasks } from './tasks';
+export { TaskCreateResponse, TaskCreateParams, Task } from './task';
