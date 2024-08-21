@@ -1,24 +1,14 @@
 # Users
 
-## Me
-
 Types:
 
-- <code><a href="./src/resources/users/me.ts">MeRetrieveResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserMeResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserOnboardingResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v1/user/me">client.users.me.<a href="./src/resources/users/me.ts">retrieve</a>({ ...params }) -> MeRetrieveResponse</code>
-
-## Onboarding
-
-Types:
-
-- <code><a href="./src/resources/users/onboarding.ts">OnboardingCreateResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v1/user/onboarding">client.users.onboarding.<a href="./src/resources/users/onboarding.ts">create</a>({ ...params }) -> OnboardingCreateResponse</code>
+- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
+- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
 
 ## Referral
 
@@ -76,7 +66,7 @@ Types:
 - <code><a href="./src/resources/submissions.ts">SubmissionFinalizeResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionProgressResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionReviewResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionUploadFilesResponse</a></code>
+- <code><a href="./src/resources/submissions.ts">SubmissionUploadResponse</a></code>
 
 Methods:
 
@@ -84,4 +74,4 @@ Methods:
 - <code title="get /api/v1/submission/{submissionId}/finalize">client.submissions.<a href="./src/resources/submissions.ts">finalize</a>(submissionId, { ...params }) -> SubmissionFinalizeResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">progress</a>(submissionId, { ...params }) -> SubmissionProgressResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions.ts">review</a>(submissionId, { ...params }) -> SubmissionReviewResponse</code>
-- <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions.ts">uploadFiles</a>(submissionId, { ...params }) -> SubmissionUploadFilesResponse</code>
+- <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions.ts">upload</a>(submissionId, { ...params }) -> SubmissionUploadResponse</code>

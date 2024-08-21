@@ -97,11 +97,11 @@ export class Submissions extends APIResource {
   /**
    * Upload files to a submission
    */
-  uploadFiles(
+  upload(
     submissionId: string,
-    params: SubmissionUploadFilesParams,
+    params: SubmissionUploadParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionUploadFilesResponse> {
+  ): Core.APIPromise<SubmissionUploadResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
     return this._client.post(`/api/v1/submission/${submissionId}`, {
       body,
@@ -145,13 +145,13 @@ export interface SubmissionReviewResponse {
   message?: string;
 }
 
-export interface SubmissionUploadFilesResponse {
-  submission: SubmissionUploadFilesResponse.Submission;
+export interface SubmissionUploadResponse {
+  submission: SubmissionUploadResponse.Submission;
 
   success: boolean;
 }
 
-export namespace SubmissionUploadFilesResponse {
+export namespace SubmissionUploadResponse {
   export interface Submission {
     id: string;
 
@@ -247,11 +247,11 @@ export interface SubmissionReviewParams {
   'x-api-key'?: string;
 }
 
-export interface SubmissionUploadFilesParams {
+export interface SubmissionUploadParams {
   /**
    * Body param:
    */
-  files: Array<SubmissionUploadFilesParams.File>;
+  files: Array<SubmissionUploadParams.File>;
 
   /**
    * Body param:
@@ -269,7 +269,7 @@ export interface SubmissionUploadFilesParams {
   'x-api-key'?: string;
 }
 
-export namespace SubmissionUploadFilesParams {
+export namespace SubmissionUploadParams {
   export interface File {
     contentType: string;
 
@@ -286,10 +286,10 @@ export namespace Submissions {
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
   export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
-  export import SubmissionUploadFilesResponse = SubmissionsAPI.SubmissionUploadFilesResponse;
+  export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
   export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
   export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
-  export import SubmissionUploadFilesParams = SubmissionsAPI.SubmissionUploadFilesParams;
+  export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
 }
