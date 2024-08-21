@@ -50,33 +50,6 @@ describe('resource submissions', () => {
     });
   });
 
-  test('addReview: only required params', async () => {
-    const responsePromise = client.submissions.addReview('submissionId', {
-      comment: 'comment',
-      isPublic: true,
-      rating: 0,
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('addReview: required and optional params', async () => {
-    const response = await client.submissions.addReview('submissionId', {
-      comment: 'comment',
-      isPublic: true,
-      rating: 0,
-      fileComments: { foo: 'string' },
-      fileRatings: { foo: 0 },
-      authorization: 'authorization',
-      'x-api-key': 'x-api-key',
-    });
-  });
-
   test('finalize', async () => {
     const responsePromise = client.submissions.finalize('submissionId');
     const rawResponse = await responsePromise.asResponse();
@@ -106,10 +79,31 @@ describe('resource submissions', () => {
     ).rejects.toThrow(Artilla.NotFoundError);
   });
 
-  test('updateProgress: only required params', async () => {
-    const responsePromise = client.submissions.updateProgress('submissionId', {
+  test('progress: only required params', async () => {
+    const responsePromise = client.submissions.progress('submissionId', { progressPercent: 0, text: 'text' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('progress: required and optional params', async () => {
+    const response = await client.submissions.progress('submissionId', {
       progressPercent: 0,
       text: 'text',
+      authorization: 'authorization',
+      'x-api-key': 'x-api-key',
+    });
+  });
+
+  test('review: only required params', async () => {
+    const responsePromise = client.submissions.review('submissionId', {
+      comment: 'comment',
+      isPublic: true,
+      rating: 0,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -120,10 +114,13 @@ describe('resource submissions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('updateProgress: required and optional params', async () => {
-    const response = await client.submissions.updateProgress('submissionId', {
-      progressPercent: 0,
-      text: 'text',
+  test('review: required and optional params', async () => {
+    const response = await client.submissions.review('submissionId', {
+      comment: 'comment',
+      isPublic: true,
+      rating: 0,
+      fileComments: { foo: 'string' },
+      fileRatings: { foo: 0 },
       authorization: 'authorization',
       'x-api-key': 'x-api-key',
     });
