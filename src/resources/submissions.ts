@@ -54,15 +54,16 @@ export class Submissions extends APIResource {
   }
 
   /**
-   * Set the progress on a submission
+   * Allows users to add a rating for the submission completed by the agent by
+   * providing a 1-5 start rating and optional comments
    */
-  progress(
+  review(
     submissionId: string,
-    params: SubmissionProgressParams,
+    params: SubmissionReviewParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionProgressResponse> {
+  ): Core.APIPromise<SubmissionReviewResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/submission/${submissionId}/progress`, {
+    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
       body,
       ...options,
       headers: {
@@ -74,16 +75,15 @@ export class Submissions extends APIResource {
   }
 
   /**
-   * Allows users to add a rating for the submission completed by the agent by
-   * providing a 1-5 start rating and optional comments
+   * Set the progress on a submission
    */
-  review(
+  setProgress(
     submissionId: string,
-    params: SubmissionReviewParams,
+    params: SubmissionSetProgressParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionReviewResponse> {
+  ): Core.APIPromise<SubmissionSetProgressResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
+    return this._client.post(`/api/v1/submission/${submissionId}/progress`, {
       body,
       ...options,
       headers: {
@@ -133,13 +133,13 @@ export interface SubmissionFinalizeResponse {
   success: boolean;
 }
 
-export interface SubmissionProgressResponse {
+export interface SubmissionReviewResponse {
   success: boolean;
 
   message?: string;
 }
 
-export interface SubmissionReviewResponse {
+export interface SubmissionSetProgressResponse {
   success: boolean;
 
   message?: string;
@@ -188,28 +188,6 @@ export interface SubmissionFinalizeParams {
   'x-api-key'?: string;
 }
 
-export interface SubmissionProgressParams {
-  /**
-   * Body param:
-   */
-  progressPercent: number;
-
-  /**
-   * Body param:
-   */
-  text: string;
-
-  /**
-   * Header param: This is your JWT tolen
-   */
-  authorization?: string;
-
-  /**
-   * Header param: A valid API key
-   */
-  'x-api-key'?: string;
-}
-
 export interface SubmissionReviewParams {
   /**
    * Body param:
@@ -235,6 +213,28 @@ export interface SubmissionReviewParams {
    * Body param:
    */
   fileRatings?: Record<string, number | null>;
+
+  /**
+   * Header param: This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * Header param: A valid API key
+   */
+  'x-api-key'?: string;
+}
+
+export interface SubmissionSetProgressParams {
+  /**
+   * Body param:
+   */
+  progressPercent: number;
+
+  /**
+   * Body param:
+   */
+  text: string;
 
   /**
    * Header param: This is your JWT tolen
@@ -284,12 +284,12 @@ export namespace SubmissionUploadParams {
 export namespace Submissions {
   export import SubmissionCreateResponse = SubmissionsAPI.SubmissionCreateResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
-  export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
   export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
+  export import SubmissionSetProgressResponse = SubmissionsAPI.SubmissionSetProgressResponse;
   export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
-  export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
   export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
+  export import SubmissionSetProgressParams = SubmissionsAPI.SubmissionSetProgressParams;
   export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
 }
