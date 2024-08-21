@@ -139,13 +139,24 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['ARTILLA_BASE_URL'] = ''; // empty
       const client = new Artilla({});
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('https://www.artilla.ai');
     });
 
     test('blank env variable', () => {
       process.env['ARTILLA_BASE_URL'] = '  '; // blank
       const client = new Artilla({});
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('https://www.artilla.ai');
+    });
+
+    test('env variable with environment', () => {
+      process.env['ARTILLA_BASE_URL'] = 'https://example.com/from_env';
+
+      expect(() => new Artilla({ environment: 'production' })).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or ARTILLA_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      );
+
+      const client = new Artilla({ baseURL: null, environment: 'production' });
+      expect(client.baseURL).toEqual('https://www.artilla.ai');
     });
   });
 

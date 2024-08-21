@@ -6,7 +6,24 @@ import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as API from './resources/index';
 
+const environments = {
+  production: 'https://www.artilla.ai',
+  environment_1: 'https://staging.artilla.ai',
+  environment_2: 'http://localhost:3000',
+};
+type Environment = keyof typeof environments;
+
 export interface ClientOptions {
+  /**
+   * Specifies the environment to use for the API.
+   *
+   * Each environment maps to a different base URL:
+   * - `production` corresponds to `https://www.artilla.ai`
+   * - `environment_1` corresponds to `https://staging.artilla.ai`
+   * - `environment_2` corresponds to `http://localhost:3000`
+   */
+  environment?: Environment;
+
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
@@ -73,7 +90,8 @@ export class Artilla extends Core.APIClient {
   /**
    * API Client for interfacing with the Artilla API.
    *
-   * @param {string} [opts.baseURL=process.env['ARTILLA_BASE_URL'] ?? https://localhost:8080/test-api] - Override the default base URL for the API.
+   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
+   * @param {string} [opts.baseURL=process.env['ARTILLA_BASE_URL'] ?? https://www.artilla.ai] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -84,11 +102,18 @@ export class Artilla extends Core.APIClient {
   constructor({ baseURL = Core.readEnv('ARTILLA_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
-      baseURL: baseURL || `https://localhost:8080/test-api`,
+      baseURL,
+      environment: opts.environment ?? 'production',
     };
 
+    if (baseURL && opts.environment) {
+      throw new Errors.ArtillaError(
+        'Ambiguous URL; The `baseURL` option (or ARTILLA_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      );
+    }
+
     super({
-      baseURL: options.baseURL!,
+      baseURL: options.baseURL || environments[options.environment || 'production'],
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -100,9 +125,8 @@ export class Artilla extends Core.APIClient {
 
   users: API.Users = new API.Users(this);
   agents: API.Agents = new API.Agents(this);
-  proposals: API.Proposals = new API.Proposals(this);
+  tasks: API.Tasks = new API.Tasks(this);
   submissions: API.Submissions = new API.Submissions(this);
-  workspaces: API.Workspaces = new API.Workspaces(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -159,10 +183,6 @@ export namespace Artilla {
   export import RequestOptions = Core.RequestOptions;
 
   export import Users = API.Users;
-  export import UserMeResponse = API.UserMeResponse;
-  export import UserOnboardingResponse = API.UserOnboardingResponse;
-  export import UserMeParams = API.UserMeParams;
-  export import UserOnboardingParams = API.UserOnboardingParams;
 
   export import Agents = API.Agents;
   export import AgentCreateResponse = API.AgentCreateResponse;
@@ -174,23 +194,25 @@ export namespace Artilla {
   export import AgentUpdateParams = API.AgentUpdateParams;
   export import AgentListParams = API.AgentListParams;
 
-  export import Proposals = API.Proposals;
+  export import Tasks = API.Tasks;
+  export import TaskRetrieveResponse = API.TaskRetrieveResponse;
+  export import TaskListResponse = API.TaskListResponse;
+  export import TaskRetrieveParams = API.TaskRetrieveParams;
+  export import TaskListParams = API.TaskListParams;
 
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
   export import SubmissionListResponse = API.SubmissionListResponse;
+  export import SubmissionAddReviewResponse = API.SubmissionAddReviewResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
-  export import SubmissionProgressResponse = API.SubmissionProgressResponse;
-  export import SubmissionReviewResponse = API.SubmissionReviewResponse;
-  export import SubmissionUploadResponse = API.SubmissionUploadResponse;
+  export import SubmissionUpdateProgressResponse = API.SubmissionUpdateProgressResponse;
+  export import SubmissionUploadFilesResponse = API.SubmissionUploadFilesResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
   export import SubmissionListParams = API.SubmissionListParams;
+  export import SubmissionAddReviewParams = API.SubmissionAddReviewParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
-  export import SubmissionProgressParams = API.SubmissionProgressParams;
-  export import SubmissionReviewParams = API.SubmissionReviewParams;
-  export import SubmissionUploadParams = API.SubmissionUploadParams;
-
-  export import Workspaces = API.Workspaces;
+  export import SubmissionUpdateProgressParams = API.SubmissionUpdateProgressParams;
+  export import SubmissionUploadFilesParams = API.SubmissionUploadFilesParams;
 }
 
 export default Artilla;

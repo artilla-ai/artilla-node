@@ -4,12 +4,10 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as AgentsAPI from './agents';
-import * as SchemaAPI from './schema';
-import * as TasksAPI from './tasks';
+import * as TaskAPI from './task';
 
 export class Agents extends APIResource {
-  tasks: TasksAPI.Tasks = new TasksAPI.Tasks(this._client);
-  schema: SchemaAPI.Schema = new SchemaAPI.Schema(this._client);
+  task: TaskAPI.Task = new TaskAPI.Task(this._client);
 
   /**
    * Creates a new agent
@@ -404,12 +402,7 @@ export namespace Agents {
   export import AgentRetrieveParams = AgentsAPI.AgentRetrieveParams;
   export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
   export import AgentListParams = AgentsAPI.AgentListParams;
-  export import Tasks = TasksAPI.Tasks;
-  export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskRetrieveResponse = TasksAPI.TaskRetrieveResponse;
-  export import TaskListResponse = TasksAPI.TaskListResponse;
-  export import TaskCreateParams = TasksAPI.TaskCreateParams;
-  export import TaskRetrieveParams = TasksAPI.TaskRetrieveParams;
-  export import TaskListParams = TasksAPI.TaskListParams;
-  export import Schema = SchemaAPI.Schema;
+  export import Task = TaskAPI.Task;
+  export import TaskCreateResponse = TaskAPI.TaskCreateResponse;
+  export import TaskCreateParams = TaskAPI.TaskCreateParams;
 }
