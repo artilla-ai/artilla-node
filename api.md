@@ -1,16 +1,34 @@
 # Users
 
+## Me
+
 Types:
 
-- <code><a href="./src/resources/users.ts">UserMeResponse</a></code>
-- <code><a href="./src/resources/users.ts">UserOnboardingResponse</a></code>
-- <code><a href="./src/resources/users.ts">UserReferralResponse</a></code>
+- <code><a href="./src/resources/users/me.ts">MeRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
-- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
-- <code title="get /api/v1/user/referral/{referralCode}">client.users.<a href="./src/resources/users.ts">referral</a>(referralCode, { ...params }) -> UserReferralResponse</code>
+- <code title="get /api/v1/user/me">client.users.me.<a href="./src/resources/users/me.ts">retrieve</a>({ ...params }) -> MeRetrieveResponse</code>
+
+## Onboarding
+
+Types:
+
+- <code><a href="./src/resources/users/onboarding.ts">OnboardingCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/user/onboarding">client.users.onboarding.<a href="./src/resources/users/onboarding.ts">create</a>({ ...params }) -> OnboardingCreateResponse</code>
+
+## Referral
+
+Types:
+
+- <code><a href="./src/resources/users/referral.ts">ReferralRetrieveResponse</a></code>
+
+Methods:
+
+- <code title="get /api/v1/user/referral/{referralCode}">client.users.referral.<a href="./src/resources/users/referral.ts">retrieve</a>(referralCode, { ...params }) -> ReferralRetrieveResponse</code>
 
 # Agents
 

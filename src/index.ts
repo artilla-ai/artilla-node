@@ -183,12 +183,6 @@ export namespace Artilla {
   export import RequestOptions = Core.RequestOptions;
 
   export import Users = API.Users;
-  export import UserMeResponse = API.UserMeResponse;
-  export import UserOnboardingResponse = API.UserOnboardingResponse;
-  export import UserReferralResponse = API.UserReferralResponse;
-  export import UserMeParams = API.UserMeParams;
-  export import UserOnboardingParams = API.UserOnboardingParams;
-  export import UserReferralParams = API.UserReferralParams;
 
   export import Agents = API.Agents;
   export import AgentCreateResponse = API.AgentCreateResponse;
