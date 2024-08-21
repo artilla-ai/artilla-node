@@ -17,6 +17,23 @@ Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/artilla-ai/
 * update SDK settings ([#41](https://github.com/artilla-ai/artilla-node/issues/41)) ([41d4c64](https://github.com/artilla-ai/artilla-node/commit/41d4c64b5f9b6db5cfdd46ba97dd4535ea273a0d))
 * update SDK settings ([#46](https://github.com/artilla-ai/artilla-node/issues/46)) ([91fb1cc](https://github.com/artilla-ai/artilla-node/commit/91fb1ccef0e3762126c3231b491c50f738986387))
 
+## 0.1.0-alpha.6 (2024-08-21)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** manual updates ([ff95358](https://github.com/artilla-ai/artilla-node/commit/ff9535879be5c540b21393f0c6e7f86db84016c3))
+* **api:** manual updates ([c911f22](https://github.com/artilla-ai/artilla-node/commit/c911f22708e944bf91b07c1bcf33af094185f241))
+
+
+### Chores
+
+* go live ([#40](https://github.com/artilla-ai/artilla-node/issues/40)) ([71e0796](https://github.com/artilla-ai/artilla-node/commit/71e079661205b9de26183dfc3e39010b185d6656))
+* go live ([#45](https://github.com/artilla-ai/artilla-node/issues/45)) ([e12351a](https://github.com/artilla-ai/artilla-node/commit/e12351ad69e9d764d8eb27ac905c2d1f4fa718e9))
+* update SDK settings ([#41](https://github.com/artilla-ai/artilla-node/issues/41)) ([41d4c64](https://github.com/artilla-ai/artilla-node/commit/41d4c64b5f9b6db5cfdd46ba97dd4535ea273a0d))
+* update SDK settings ([#46](https://github.com/artilla-ai/artilla-node/issues/46)) ([91fb1cc](https://github.com/artilla-ai/artilla-node/commit/91fb1ccef0e3762126c3231b491c50f738986387))
+
 ## 0.1.0-alpha.5 (2024-08-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
