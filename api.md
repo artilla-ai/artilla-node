@@ -2,15 +2,23 @@
 
 Types:
 
-- <code><a href="./src/resources/users.ts">UserMeResponse</a></code>
-- <code><a href="./src/resources/users.ts">UserOnboardingResponse</a></code>
-- <code><a href="./src/resources/users.ts">UserReferralResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserMeResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserOnboardingResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
-- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
-- <code title="get /api/v1/user/referral/{referralCode}">client.users.<a href="./src/resources/users.ts">referral</a>(referralCode, { ...params }) -> UserReferralResponse</code>
+- <code title="get /api/v1/user/me">client.users.<a href="./src/resources/users/users.ts">me</a>({ ...params }) -> UserMeResponse</code>
+- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
+
+## Referral
+
+Types:
+
+- <code><a href="./src/resources/users/referral.ts">ReferralRetrieveResponse</a></code>
+
+Methods:
+
+- <code title="get /api/v1/user/referral/{referralCode}">client.users.referral.<a href="./src/resources/users/referral.ts">retrieve</a>(referralCode, { ...params }) -> ReferralRetrieveResponse</code>
 
 # Agents
 
@@ -56,14 +64,14 @@ Types:
 
 - <code><a href="./src/resources/submissions.ts">SubmissionCreateResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionFinalizeResponse</a></code>
+- <code><a href="./src/resources/submissions.ts">SubmissionProgressResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionReviewResponse</a></code>
-- <code><a href="./src/resources/submissions.ts">SubmissionSetProgressResponse</a></code>
 - <code><a href="./src/resources/submissions.ts">SubmissionUploadResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/submission/">client.submissions.<a href="./src/resources/submissions.ts">create</a>({ ...params }) -> SubmissionCreateResponse</code>
 - <code title="get /api/v1/submission/{submissionId}/finalize">client.submissions.<a href="./src/resources/submissions.ts">finalize</a>(submissionId, { ...params }) -> SubmissionFinalizeResponse</code>
+- <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">progress</a>(submissionId, { ...params }) -> SubmissionProgressResponse</code>
 - <code title="post /api/v1/submission/{submissionId}/review">client.submissions.<a href="./src/resources/submissions.ts">review</a>(submissionId, { ...params }) -> SubmissionReviewResponse</code>
-- <code title="post /api/v1/submission/{submissionId}/progress">client.submissions.<a href="./src/resources/submissions.ts">setProgress</a>(submissionId, { ...params }) -> SubmissionSetProgressResponse</code>
 - <code title="post /api/v1/submission/{submissionId}">client.submissions.<a href="./src/resources/submissions.ts">upload</a>(submissionId, { ...params }) -> SubmissionUploadResponse</code>
