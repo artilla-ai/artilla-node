@@ -42,27 +42,6 @@ export class Submissions extends APIResource {
   }
 
   /**
-   * Allows users to add a rating for the submission completed by the agent by
-   * providing a 1-5 start rating and optional comments
-   */
-  addReview(
-    submissionId: string,
-    params: SubmissionAddReviewParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionAddReviewResponse> {
-    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
-    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
-      body,
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
-  }
-
-  /**
    * Upload files to a submission
    */
   finalize(
@@ -93,13 +72,34 @@ export class Submissions extends APIResource {
   /**
    * Set the progress on a submission
    */
-  updateProgress(
+  progress(
     submissionId: string,
-    params: SubmissionUpdateProgressParams,
+    params: SubmissionProgressParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SubmissionUpdateProgressResponse> {
+  ): Core.APIPromise<SubmissionProgressResponse> {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
     return this._client.post(`/api/v1/submission/${submissionId}/progress`, {
+      body,
+      ...options,
+      headers: {
+        ...(authorization != null ? { authorization: authorization } : undefined),
+        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
+  }
+
+  /**
+   * Allows users to add a rating for the submission completed by the agent by
+   * providing a 1-5 start rating and optional comments
+   */
+  review(
+    submissionId: string,
+    params: SubmissionReviewParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SubmissionReviewResponse> {
+    const { authorization, 'x-api-key': xAPIKey, ...body } = params;
+    return this._client.post(`/api/v1/submission/${submissionId}/review`, {
       body,
       ...options,
       headers: {
@@ -211,17 +211,17 @@ export namespace SubmissionListResponse {
   }
 }
 
-export interface SubmissionAddReviewResponse {
+export interface SubmissionFinalizeResponse {
+  success: boolean;
+}
+
+export interface SubmissionProgressResponse {
   success: boolean;
 
   message?: string;
 }
 
-export interface SubmissionFinalizeResponse {
-  success: boolean;
-}
-
-export interface SubmissionUpdateProgressResponse {
+export interface SubmissionReviewResponse {
   success: boolean;
 
   message?: string;
@@ -285,7 +285,41 @@ export interface SubmissionListParams {
   'x-api-key'?: string;
 }
 
-export interface SubmissionAddReviewParams {
+export interface SubmissionFinalizeParams {
+  /**
+   * This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * A valid API key
+   */
+  'x-api-key'?: string;
+}
+
+export interface SubmissionProgressParams {
+  /**
+   * Body param:
+   */
+  progressPercent: number;
+
+  /**
+   * Body param:
+   */
+  text: string;
+
+  /**
+   * Header param: This is your JWT tolen
+   */
+  authorization?: string;
+
+  /**
+   * Header param: A valid API key
+   */
+  'x-api-key'?: string;
+}
+
+export interface SubmissionReviewParams {
   /**
    * Body param:
    */
@@ -310,40 +344,6 @@ export interface SubmissionAddReviewParams {
    * Body param:
    */
   fileRatings?: Record<string, number | null>;
-
-  /**
-   * Header param: This is your JWT tolen
-   */
-  authorization?: string;
-
-  /**
-   * Header param: A valid API key
-   */
-  'x-api-key'?: string;
-}
-
-export interface SubmissionFinalizeParams {
-  /**
-   * This is your JWT tolen
-   */
-  authorization?: string;
-
-  /**
-   * A valid API key
-   */
-  'x-api-key'?: string;
-}
-
-export interface SubmissionUpdateProgressParams {
-  /**
-   * Body param:
-   */
-  progressPercent: number;
-
-  /**
-   * Body param:
-   */
-  text: string;
 
   /**
    * Header param: This is your JWT tolen
@@ -393,14 +393,14 @@ export namespace SubmissionUploadFilesParams {
 export namespace Submissions {
   export import SubmissionCreateResponse = SubmissionsAPI.SubmissionCreateResponse;
   export import SubmissionListResponse = SubmissionsAPI.SubmissionListResponse;
-  export import SubmissionAddReviewResponse = SubmissionsAPI.SubmissionAddReviewResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
-  export import SubmissionUpdateProgressResponse = SubmissionsAPI.SubmissionUpdateProgressResponse;
+  export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
+  export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
   export import SubmissionUploadFilesResponse = SubmissionsAPI.SubmissionUploadFilesResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
   export import SubmissionListParams = SubmissionsAPI.SubmissionListParams;
-  export import SubmissionAddReviewParams = SubmissionsAPI.SubmissionAddReviewParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
-  export import SubmissionUpdateProgressParams = SubmissionsAPI.SubmissionUpdateProgressParams;
+  export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
+  export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
   export import SubmissionUploadFilesParams = SubmissionsAPI.SubmissionUploadFilesParams;
 }
