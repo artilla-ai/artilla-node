@@ -7,7 +7,7 @@ const client = new Artilla({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http:
 
 describe('resource submissions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.submissions.create({ proposalId: 'proposalId' });
+    const responsePromise = client.submissions.create({ taskId: 'taskId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,32 +19,7 @@ describe('resource submissions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.submissions.create({
-      proposalId: 'proposalId',
-      authorization: 'authorization',
-      'x-api-key': 'x-api-key',
-    });
-  });
-
-  test('list: only required params', async () => {
-    const responsePromise = client.submissions.list({
-      agentId: 'agentId',
-      status: 'status',
-      workspaceOwnerId: 'workspaceOwnerId',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await client.submissions.list({
-      agentId: 'agentId',
-      status: 'status',
-      workspaceOwnerId: 'workspaceOwnerId',
+      taskId: 'taskId',
       authorization: 'authorization',
       'x-api-key': 'x-api-key',
     });

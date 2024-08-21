@@ -7,7 +7,7 @@ import * as SubmissionsAPI from './submissions';
 
 export class Submissions extends APIResource {
   /**
-   * Create a new submission for a proposal
+   * Create a new submission for a task
    */
   create(
     params: SubmissionCreateParams,
@@ -16,22 +16,6 @@ export class Submissions extends APIResource {
     const { authorization, 'x-api-key': xAPIKey, ...body } = params;
     return this._client.post('/api/v1/submission/', {
       body,
-      ...options,
-      headers: {
-        ...(authorization != null ? { authorization: authorization } : undefined),
-        ...(xAPIKey != null ? { 'x-api-key': xAPIKey } : undefined),
-        ...options?.headers,
-      },
-    });
-  }
-
-  /**
-   * Fetch existing submissions
-   */
-  list(params: SubmissionListParams, options?: Core.RequestOptions): Core.APIPromise<SubmissionListResponse> {
-    const { authorization, 'x-api-key': xAPIKey, ...query } = params;
-    return this._client.get('/api/v1/submission/', {
-      query,
       ...options,
       headers: {
         ...(authorization != null ? { authorization: authorization } : undefined),
@@ -145,72 +129,6 @@ export namespace SubmissionCreateResponse {
   }
 }
 
-export interface SubmissionListResponse {
-  submissions: Array<SubmissionListResponse.Submission>;
-
-  success: boolean;
-}
-
-export namespace SubmissionListResponse {
-  export interface Submission {
-    id: string;
-
-    agent: Submission.Agent;
-
-    data: Submission.Data;
-
-    proposal: Submission.Proposal;
-
-    workspace: Submission.Workspace;
-  }
-
-  export namespace Submission {
-    export interface Agent {
-      id: string;
-
-      title: string;
-    }
-
-    export interface Data {
-      files: Array<Data.File>;
-
-      progress: Data.Progress;
-
-      message?: string;
-    }
-
-    export namespace Data {
-      export interface File {
-        contentType: string;
-
-        key: string;
-
-        url: string;
-
-        description?: string;
-      }
-
-      export interface Progress {
-        percent: number;
-
-        text: string;
-
-        timestamp: string;
-      }
-    }
-
-    export interface Proposal {
-      id: string;
-    }
-
-    export interface Workspace {
-      id: string;
-
-      title: string;
-    }
-  }
-}
-
 export interface SubmissionFinalizeResponse {
   success: boolean;
 }
@@ -245,34 +163,7 @@ export interface SubmissionCreateParams {
   /**
    * Body param:
    */
-  proposalId: string;
-
-  /**
-   * Header param: This is your JWT tolen
-   */
-  authorization?: string;
-
-  /**
-   * Header param: A valid API key
-   */
-  'x-api-key'?: string;
-}
-
-export interface SubmissionListParams {
-  /**
-   * Query param:
-   */
-  agentId: string;
-
-  /**
-   * Query param:
-   */
-  status: string;
-
-  /**
-   * Query param:
-   */
-  workspaceOwnerId: string;
+  taskId: string;
 
   /**
    * Header param: This is your JWT tolen
@@ -392,13 +283,11 @@ export namespace SubmissionUploadFilesParams {
 
 export namespace Submissions {
   export import SubmissionCreateResponse = SubmissionsAPI.SubmissionCreateResponse;
-  export import SubmissionListResponse = SubmissionsAPI.SubmissionListResponse;
   export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
   export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
   export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
   export import SubmissionUploadFilesResponse = SubmissionsAPI.SubmissionUploadFilesResponse;
   export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
-  export import SubmissionListParams = SubmissionsAPI.SubmissionListParams;
   export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
   export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
   export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
