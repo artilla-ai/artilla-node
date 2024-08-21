@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-08-21)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** manual updates ([#20](https://github.com/artilla-ai/artilla-node/issues/20)) ([af7a107](https://github.com/artilla-ai/artilla-node/commit/af7a107eaeed25af98df7e1aa3dfc99da6e00b6d))
+
 ## 0.1.0-alpha.1 (2024-08-20)
 
 Full Changelog: [v0.0.1-alpha.1...v0.1.0-alpha.1](https://github.com/artilla-ai/artilla-node/compare/v0.0.1-alpha.1...v0.1.0-alpha.1)
