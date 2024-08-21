@@ -8,8 +8,8 @@ import * as API from './resources/index';
 
 const environments = {
   production: 'https://www.artilla.ai',
-  environment_1: 'https://staging.artilla.ai',
-  environment_2: 'http://localhost:3000',
+  staging: 'https://staging.artilla.ai',
+  local: 'http://localhost:3000',
 };
 type Environment = keyof typeof environments;
 
@@ -19,8 +19,8 @@ export interface ClientOptions {
    *
    * Each environment maps to a different base URL:
    * - `production` corresponds to `https://www.artilla.ai`
-   * - `environment_1` corresponds to `https://staging.artilla.ai`
-   * - `environment_2` corresponds to `http://localhost:3000`
+   * - `staging` corresponds to `https://staging.artilla.ai`
+   * - `local` corresponds to `http://localhost:3000`
    */
   environment?: Environment;
 
@@ -183,9 +183,7 @@ export namespace Artilla {
   export import RequestOptions = Core.RequestOptions;
 
   export import Users = API.Users;
-  export import UserMeResponse = API.UserMeResponse;
   export import UserOnboardingResponse = API.UserOnboardingResponse;
-  export import UserMeParams = API.UserMeParams;
   export import UserOnboardingParams = API.UserOnboardingParams;
 
   export import Agents = API.Agents;
@@ -206,15 +204,15 @@ export namespace Artilla {
 
   export import Submissions = API.Submissions;
   export import SubmissionCreateResponse = API.SubmissionCreateResponse;
-  export import SubmissionAddReviewResponse = API.SubmissionAddReviewResponse;
   export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
-  export import SubmissionSetProgressResponse = API.SubmissionSetProgressResponse;
-  export import SubmissionUploadFilesResponse = API.SubmissionUploadFilesResponse;
+  export import SubmissionProgressResponse = API.SubmissionProgressResponse;
+  export import SubmissionReviewResponse = API.SubmissionReviewResponse;
+  export import SubmissionUploadResponse = API.SubmissionUploadResponse;
   export import SubmissionCreateParams = API.SubmissionCreateParams;
-  export import SubmissionAddReviewParams = API.SubmissionAddReviewParams;
   export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
-  export import SubmissionSetProgressParams = API.SubmissionSetProgressParams;
-  export import SubmissionUploadFilesParams = API.SubmissionUploadFilesParams;
+  export import SubmissionProgressParams = API.SubmissionProgressParams;
+  export import SubmissionReviewParams = API.SubmissionReviewParams;
+  export import SubmissionUploadParams = API.SubmissionUploadParams;
 }
 
 export default Artilla;
