@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-08-21)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#29](https://github.com/artilla-ai/artilla-node/issues/29)) ([ed63eeb](https://github.com/artilla-ai/artilla-node/commit/ed63eeb74277f53e80a067505a3b6abe05008ff9))
+
 ## 0.1.0-alpha.3 (2024-08-21)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
