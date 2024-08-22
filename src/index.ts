@@ -8,8 +8,8 @@ import * as API from './resources/index';
 
 const environments = {
   production: 'https://www.artilla.ai',
-  staging: 'https://staging.artilla.ai',
-  local: 'http://localhost:3000',
+  environment_1: 'https://staging.artilla.ai',
+  environment_2: 'http://localhost:3000',
 };
 type Environment = keyof typeof environments;
 
@@ -19,8 +19,8 @@ export interface ClientOptions {
    *
    * Each environment maps to a different base URL:
    * - `production` corresponds to `https://www.artilla.ai`
-   * - `staging` corresponds to `https://staging.artilla.ai`
-   * - `local` corresponds to `http://localhost:3000`
+   * - `environment_1` corresponds to `https://staging.artilla.ai`
+   * - `environment_2` corresponds to `http://localhost:3000`
    */
   environment?: Environment;
 
@@ -183,8 +183,6 @@ export namespace Artilla {
   export import RequestOptions = Core.RequestOptions;
 
   export import Users = API.Users;
-  export import UserOnboardingResponse = API.UserOnboardingResponse;
-  export import UserOnboardingParams = API.UserOnboardingParams;
 
   export import Agents = API.Agents;
   export import AgentCreateResponse = API.AgentCreateResponse;

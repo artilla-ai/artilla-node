@@ -1,13 +1,5 @@
 # Users
 
-Types:
-
-- <code><a href="./src/resources/users/users.ts">UserOnboardingResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v1/user/onboarding">client.users.<a href="./src/resources/users/users.ts">onboarding</a>({ ...params }) -> UserOnboardingResponse</code>
-
 ## Me
 
 Types:
@@ -17,6 +9,16 @@ Types:
 Methods:
 
 - <code title="get /api/v1/user/me">client.users.me.<a href="./src/resources/users/me.ts">retrieve</a>({ ...params }) -> MeRetrieveResponse</code>
+
+## Onboarding
+
+Types:
+
+- <code><a href="./src/resources/users/onboarding.ts">OnboardingCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/user/onboarding">client.users.onboarding.<a href="./src/resources/users/onboarding.ts">create</a>({ ...params }) -> OnboardingCreateResponse</code>
 
 ## Referral
 
