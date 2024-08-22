@@ -20,7 +20,7 @@ or products provided by Artilla please follow the respective company's security 
 
 ### Artilla Terms and Policies
 
-Please contact contact@artilla.ai. for any questions or concerns regarding security of our services.
+Please contact contact@artilla.ai for any questions or concerns regarding security of our services.
 
 ---
 
