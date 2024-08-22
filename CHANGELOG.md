@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2024-08-22)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** manual updates ([5217d3c](https://github.com/artilla-ai/artilla-node/commit/5217d3c50354e20f0e086b20751b5dbb5c799d6b))
+* **api:** manual updates ([b10b0d0](https://github.com/artilla-ai/artilla-node/commit/b10b0d041330201485a2872bb39eb639933493c2))
+* **api:** manual updates ([44aa16d](https://github.com/artilla-ai/artilla-node/commit/44aa16d550e65302ffa4e530bec84d0cc44285ae))
+* **api:** manual updates ([61a53bf](https://github.com/artilla-ai/artilla-node/commit/61a53bf73e475d1c87e8f16d117b41ea129a7448))
+
+
+### Chores
+
+* go live ([6fdf5ce](https://github.com/artilla-ai/artilla-node/commit/6fdf5ce257b053228e4e640201ac6006759f8605))
+* go live ([#54](https://github.com/artilla-ai/artilla-node/issues/54)) ([fdb0bd3](https://github.com/artilla-ai/artilla-node/commit/fdb0bd316fce974da66a34483efb1822c22b0169))
+* go live ([#56](https://github.com/artilla-ai/artilla-node/issues/56)) ([279e74a](https://github.com/artilla-ai/artilla-node/commit/279e74aed9201ff352cc3300f4c717c06d87b558))
+
 ## 0.1.0-alpha.6 (2024-08-21)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
