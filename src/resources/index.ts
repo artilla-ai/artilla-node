@@ -25,4 +25,4 @@ export {
   Submissions,
 } from './submissions';
 export { TaskRetrieveResponse, TaskListResponse, TaskRetrieveParams, TaskListParams, Tasks } from './tasks';
-export { UserOnboardingResponse, UserOnboardingParams, Users } from './users/users';
+export { Users } from './users/users';
