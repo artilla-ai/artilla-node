@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ReferralAPI from './referral';
 
 export class Referral extends APIResource {
   /**
@@ -63,7 +62,9 @@ export interface ReferralRetrieveParams {
   'x-api-key'?: string;
 }
 
-export namespace Referral {
-  export import ReferralRetrieveResponse = ReferralAPI.ReferralRetrieveResponse;
-  export import ReferralRetrieveParams = ReferralAPI.ReferralRetrieveParams;
+export declare namespace Referral {
+  export {
+    type ReferralRetrieveResponse as ReferralRetrieveResponse,
+    type ReferralRetrieveParams as ReferralRetrieveParams,
+  };
 }

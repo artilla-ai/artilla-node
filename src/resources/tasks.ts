@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as TasksAPI from './tasks';
 
 export class Tasks extends APIResource {
   /**
@@ -180,9 +179,11 @@ export interface TaskListParams {
   'x-api-key'?: string;
 }
 
-export namespace Tasks {
-  export import TaskRetrieveResponse = TasksAPI.TaskRetrieveResponse;
-  export import TaskListResponse = TasksAPI.TaskListResponse;
-  export import TaskRetrieveParams = TasksAPI.TaskRetrieveParams;
-  export import TaskListParams = TasksAPI.TaskListParams;
+export declare namespace Tasks {
+  export {
+    type TaskRetrieveResponse as TaskRetrieveResponse,
+    type TaskListResponse as TaskListResponse,
+    type TaskRetrieveParams as TaskRetrieveParams,
+    type TaskListParams as TaskListParams,
+  };
 }

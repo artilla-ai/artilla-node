@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as MeAPI from './me';
 
 export class Me extends APIResource {
   /**
@@ -161,7 +160,6 @@ export interface MeRetrieveParams {
   'x-api-key'?: string;
 }
 
-export namespace Me {
-  export import MeRetrieveResponse = MeAPI.MeRetrieveResponse;
-  export import MeRetrieveParams = MeAPI.MeRetrieveParams;
+export declare namespace Me {
+  export { type MeRetrieveResponse as MeRetrieveResponse, type MeRetrieveParams as MeRetrieveParams };
 }

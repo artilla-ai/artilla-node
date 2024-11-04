@@ -1,10 +1,42 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import {
+  SubmissionCreateParams,
+  SubmissionCreateResponse,
+  SubmissionFinalizeParams,
+  SubmissionFinalizeResponse,
+  SubmissionProgressParams,
+  SubmissionProgressResponse,
+  SubmissionReviewParams,
+  SubmissionReviewResponse,
+  SubmissionUploadParams,
+  SubmissionUploadResponse,
+  Submissions,
+} from './resources/submissions';
+import {
+  TaskListParams,
+  TaskListResponse,
+  TaskRetrieveParams,
+  TaskRetrieveResponse,
+  Tasks,
+} from './resources/tasks';
+import {
+  AgentCreateParams,
+  AgentCreateResponse,
+  AgentListParams,
+  AgentListResponse,
+  AgentRetrieveParams,
+  AgentRetrieveResponse,
+  AgentUpdateParams,
+  AgentUpdateResponse,
+  Agents,
+} from './resources/agents/agents';
+import { Users } from './resources/users/users';
 
 const environments = {
   production: 'https://www.artilla.ai',
@@ -160,7 +192,7 @@ export class Artilla extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   ArtillaError,
   APIError,
   APIConnectionError,
@@ -174,43 +206,54 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Artilla {
-  export import RequestOptions = Core.RequestOptions;
+Artilla.Users = Users;
+Artilla.Agents = Agents;
+Artilla.Tasks = Tasks;
+Artilla.Submissions = Submissions;
 
-  export import Users = API.Users;
+export declare namespace Artilla {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Agents = API.Agents;
-  export import AgentCreateResponse = API.AgentCreateResponse;
-  export import AgentRetrieveResponse = API.AgentRetrieveResponse;
-  export import AgentUpdateResponse = API.AgentUpdateResponse;
-  export import AgentListResponse = API.AgentListResponse;
-  export import AgentCreateParams = API.AgentCreateParams;
-  export import AgentRetrieveParams = API.AgentRetrieveParams;
-  export import AgentUpdateParams = API.AgentUpdateParams;
-  export import AgentListParams = API.AgentListParams;
+  export { Users as Users };
 
-  export import Tasks = API.Tasks;
-  export import TaskRetrieveResponse = API.TaskRetrieveResponse;
-  export import TaskListResponse = API.TaskListResponse;
-  export import TaskRetrieveParams = API.TaskRetrieveParams;
-  export import TaskListParams = API.TaskListParams;
+  export {
+    Agents as Agents,
+    type AgentCreateResponse as AgentCreateResponse,
+    type AgentRetrieveResponse as AgentRetrieveResponse,
+    type AgentUpdateResponse as AgentUpdateResponse,
+    type AgentListResponse as AgentListResponse,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentRetrieveParams as AgentRetrieveParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
+  };
 
-  export import Submissions = API.Submissions;
-  export import SubmissionCreateResponse = API.SubmissionCreateResponse;
-  export import SubmissionFinalizeResponse = API.SubmissionFinalizeResponse;
-  export import SubmissionProgressResponse = API.SubmissionProgressResponse;
-  export import SubmissionReviewResponse = API.SubmissionReviewResponse;
-  export import SubmissionUploadResponse = API.SubmissionUploadResponse;
-  export import SubmissionCreateParams = API.SubmissionCreateParams;
-  export import SubmissionFinalizeParams = API.SubmissionFinalizeParams;
-  export import SubmissionProgressParams = API.SubmissionProgressParams;
-  export import SubmissionReviewParams = API.SubmissionReviewParams;
-  export import SubmissionUploadParams = API.SubmissionUploadParams;
+  export {
+    Tasks as Tasks,
+    type TaskRetrieveResponse as TaskRetrieveResponse,
+    type TaskListResponse as TaskListResponse,
+    type TaskRetrieveParams as TaskRetrieveParams,
+    type TaskListParams as TaskListParams,
+  };
+
+  export {
+    Submissions as Submissions,
+    type SubmissionCreateResponse as SubmissionCreateResponse,
+    type SubmissionFinalizeResponse as SubmissionFinalizeResponse,
+    type SubmissionProgressResponse as SubmissionProgressResponse,
+    type SubmissionReviewResponse as SubmissionReviewResponse,
+    type SubmissionUploadResponse as SubmissionUploadResponse,
+    type SubmissionCreateParams as SubmissionCreateParams,
+    type SubmissionFinalizeParams as SubmissionFinalizeParams,
+    type SubmissionProgressParams as SubmissionProgressParams,
+    type SubmissionReviewParams as SubmissionReviewParams,
+    type SubmissionUploadParams as SubmissionUploadParams,
+  };
 }
 
 export default Artilla;
