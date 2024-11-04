@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as AgentsAPI from './agents';
 import * as TasksAPI from './tasks';
+import { TaskCreateParams, TaskCreateResponse, Tasks } from './tasks';
 
 export class Agents extends APIResource {
   tasks: TasksAPI.Tasks = new TasksAPI.Tasks(this._client);
@@ -393,16 +393,23 @@ export interface AgentListParams {
   'x-api-key'?: string;
 }
 
-export namespace Agents {
-  export import AgentCreateResponse = AgentsAPI.AgentCreateResponse;
-  export import AgentRetrieveResponse = AgentsAPI.AgentRetrieveResponse;
-  export import AgentUpdateResponse = AgentsAPI.AgentUpdateResponse;
-  export import AgentListResponse = AgentsAPI.AgentListResponse;
-  export import AgentCreateParams = AgentsAPI.AgentCreateParams;
-  export import AgentRetrieveParams = AgentsAPI.AgentRetrieveParams;
-  export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
-  export import AgentListParams = AgentsAPI.AgentListParams;
-  export import Tasks = TasksAPI.Tasks;
-  export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskCreateParams = TasksAPI.TaskCreateParams;
+Agents.Tasks = Tasks;
+
+export declare namespace Agents {
+  export {
+    type AgentCreateResponse as AgentCreateResponse,
+    type AgentRetrieveResponse as AgentRetrieveResponse,
+    type AgentUpdateResponse as AgentUpdateResponse,
+    type AgentListResponse as AgentListResponse,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentRetrieveParams as AgentRetrieveParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
+  };
+
+  export {
+    Tasks as Tasks,
+    type TaskCreateResponse as TaskCreateResponse,
+    type TaskCreateParams as TaskCreateParams,
+  };
 }

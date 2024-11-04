@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as SubmissionsAPI from './submissions';
 
 export class Submissions extends APIResource {
   /**
@@ -281,15 +280,17 @@ export namespace SubmissionUploadParams {
   }
 }
 
-export namespace Submissions {
-  export import SubmissionCreateResponse = SubmissionsAPI.SubmissionCreateResponse;
-  export import SubmissionFinalizeResponse = SubmissionsAPI.SubmissionFinalizeResponse;
-  export import SubmissionProgressResponse = SubmissionsAPI.SubmissionProgressResponse;
-  export import SubmissionReviewResponse = SubmissionsAPI.SubmissionReviewResponse;
-  export import SubmissionUploadResponse = SubmissionsAPI.SubmissionUploadResponse;
-  export import SubmissionCreateParams = SubmissionsAPI.SubmissionCreateParams;
-  export import SubmissionFinalizeParams = SubmissionsAPI.SubmissionFinalizeParams;
-  export import SubmissionProgressParams = SubmissionsAPI.SubmissionProgressParams;
-  export import SubmissionReviewParams = SubmissionsAPI.SubmissionReviewParams;
-  export import SubmissionUploadParams = SubmissionsAPI.SubmissionUploadParams;
+export declare namespace Submissions {
+  export {
+    type SubmissionCreateResponse as SubmissionCreateResponse,
+    type SubmissionFinalizeResponse as SubmissionFinalizeResponse,
+    type SubmissionProgressResponse as SubmissionProgressResponse,
+    type SubmissionReviewResponse as SubmissionReviewResponse,
+    type SubmissionUploadResponse as SubmissionUploadResponse,
+    type SubmissionCreateParams as SubmissionCreateParams,
+    type SubmissionFinalizeParams as SubmissionFinalizeParams,
+    type SubmissionProgressParams as SubmissionProgressParams,
+    type SubmissionReviewParams as SubmissionReviewParams,
+    type SubmissionUploadParams as SubmissionUploadParams,
+  };
 }

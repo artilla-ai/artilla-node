@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as TasksAPI from './tasks';
 
 export class Tasks extends APIResource {
   /**
@@ -101,7 +100,6 @@ export interface TaskCreateParams {
   'x-api-key'?: string;
 }
 
-export namespace Tasks {
-  export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskCreateParams = TasksAPI.TaskCreateParams;
+export declare namespace Tasks {
+  export { type TaskCreateResponse as TaskCreateResponse, type TaskCreateParams as TaskCreateParams };
 }
