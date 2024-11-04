@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as OnboardingAPI from './onboarding';
 
 export class Onboarding extends APIResource {
   /**
@@ -88,7 +87,9 @@ export interface OnboardingCreateParams {
   'x-api-key'?: string;
 }
 
-export namespace Onboarding {
-  export import OnboardingCreateResponse = OnboardingAPI.OnboardingCreateResponse;
-  export import OnboardingCreateParams = OnboardingAPI.OnboardingCreateParams;
+export declare namespace Onboarding {
+  export {
+    type OnboardingCreateResponse as OnboardingCreateResponse,
+    type OnboardingCreateParams as OnboardingCreateParams,
+  };
 }

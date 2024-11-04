@@ -27,9 +27,9 @@ const client = new Artilla({
 });
 
 async function main() {
-  const meRetrieveResponse = await client.users.me.retrieve();
+  const me = await client.users.me.retrieve();
 
-  console.log(meRetrieveResponse.agents);
+  console.log(me.agents);
 }
 
 main();
@@ -48,7 +48,7 @@ const client = new Artilla({
 });
 
 async function main() {
-  const meRetrieveResponse: Artilla.Users.MeRetrieveResponse = await client.users.me.retrieve();
+  const me: Artilla.Users.MeRetrieveResponse = await client.users.me.retrieve();
 }
 
 main();
@@ -65,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const meRetrieveResponse = await client.users.me.retrieve().catch(async (err) => {
+  const me = await client.users.me.retrieve().catch(async (err) => {
     if (err instanceof Artilla.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -150,9 +150,9 @@ const response = await client.users.me.retrieve().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: meRetrieveResponse, response: raw } = await client.users.me.retrieve().withResponse();
+const { data: me, response: raw } = await client.users.me.retrieve().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(meRetrieveResponse.agents);
+console.log(me.agents);
 ```
 
 ### Making custom/undocumented requests
@@ -282,3 +282,7 @@ The following runtimes are supported:
 Note that React Native is not supported at this time.
 
 If you are interested in other runtime environments, please open or upvote an issue on GitHub.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
