@@ -44,7 +44,6 @@ const environments = {
   environment_2: 'http://localhost:3000',
 };
 type Environment = keyof typeof environments;
-
 export interface ClientOptions {
   /**
    * Specifies the environment to use for the API.
@@ -192,30 +191,10 @@ export class Artilla extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  ArtillaError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Artilla.Users = Users;
 Artilla.Agents = Agents;
 Artilla.Tasks = Tasks;
 Artilla.Submissions = Submissions;
-
 export declare namespace Artilla {
   export type RequestOptions = Core.RequestOptions;
 
@@ -255,5 +234,22 @@ export declare namespace Artilla {
     type SubmissionUploadParams as SubmissionUploadParams,
   };
 }
+
+export { toFile, fileFromPath } from 'artilla/uploads';
+export {
+  ArtillaError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from 'artilla/error';
 
 export default Artilla;
