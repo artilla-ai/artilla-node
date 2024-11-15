@@ -235,7 +235,7 @@ export declare namespace Artilla {
   };
 }
 
-export { toFile, fileFromPath } from 'artilla/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   ArtillaError,
   APIError,
@@ -250,6 +250,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'artilla/error';
+} from './error';
 
 export default Artilla;
