@@ -103,11 +103,7 @@ describe('resource submissions', () => {
 
   test('upload: only required params', async () => {
     const responsePromise = client.submissions.upload('submissionId', {
-      files: [
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-      ],
+      files: [{ contentType: 'contentType', description: 'description', key: 'key', url: 'url' }],
       message: 'message',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -121,11 +117,7 @@ describe('resource submissions', () => {
 
   test('upload: required and optional params', async () => {
     const response = await client.submissions.upload('submissionId', {
-      files: [
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-        { contentType: 'contentType', description: 'description', key: 'key', url: 'url' },
-      ],
+      files: [{ contentType: 'contentType', description: 'description', key: 'key', url: 'url' }],
       message: 'message',
       authorization: 'authorization',
       'x-api-key': 'x-api-key',
