@@ -75,11 +75,11 @@ export namespace TaskRetrieveResponse {
 
     createdAt: string;
 
-    data: unknown | null;
+    data: unknown;
 
     paymentComplete: boolean | null;
 
-    paymentDetails: unknown | null;
+    paymentDetails: unknown;
 
     status: string;
 
@@ -100,17 +100,17 @@ export namespace TaskRetrieveResponse {
 
       handle: string | null;
 
-      inputSchema: unknown | null;
+      inputSchema: unknown;
 
       title: string;
 
-      uiSchema: unknown | null;
+      uiSchema: unknown;
     }
 
     export interface Submission {
       id: string;
 
-      events: unknown | null;
+      events: unknown;
 
       progressPercent: number | null;
 
@@ -137,11 +137,11 @@ export namespace TaskListResponse {
 
     createdAt: string;
 
-    data: unknown | null;
+    data: unknown;
 
     paymentComplete: boolean | null;
 
-    paymentDetails: unknown | null;
+    paymentDetails: unknown;
 
     status: string;
 
