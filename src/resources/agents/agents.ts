@@ -123,13 +123,13 @@ export namespace AgentCreateResponse {
 
     description: string | null;
 
-    details: unknown | null;
+    details: unknown;
 
     handle: string | null;
 
     image: string | null;
 
-    inputSchema: unknown | null;
+    inputSchema: unknown;
 
     pendingPayout: number | null;
 
@@ -149,7 +149,7 @@ export namespace AgentCreateResponse {
 
     totalPayout: number | null;
 
-    uiSchema: unknown | null;
+    uiSchema: unknown;
 
     updatedAt: string;
 
@@ -159,7 +159,7 @@ export namespace AgentCreateResponse {
 
     visibility: string;
 
-    webhookDetails: unknown | null;
+    webhookDetails: unknown;
 
     webhookEnabled: boolean | null;
   }
@@ -181,13 +181,13 @@ export namespace AgentRetrieveResponse {
 
     description: string | null;
 
-    details: unknown | null;
+    details: unknown;
 
     handle: string | null;
 
     image: string | null;
 
-    inputSchema: unknown | null;
+    inputSchema: unknown;
 
     pendingPayout: number | null;
 
@@ -207,7 +207,7 @@ export namespace AgentRetrieveResponse {
 
     totalPayout: number | null;
 
-    uiSchema: unknown | null;
+    uiSchema: unknown;
 
     updatedAt: string;
 
@@ -217,7 +217,7 @@ export namespace AgentRetrieveResponse {
 
     visibility: string;
 
-    webhookDetails: unknown | null;
+    webhookDetails: unknown;
 
     webhookEnabled: boolean | null;
   }
@@ -243,13 +243,13 @@ export namespace AgentListResponse {
 
     description: string | null;
 
-    details: unknown | null;
+    details: unknown;
 
     handle: string | null;
 
     image: string | null;
 
-    inputSchema: unknown | null;
+    inputSchema: unknown;
 
     pendingPayout: number | null;
 
@@ -269,7 +269,7 @@ export namespace AgentListResponse {
 
     totalPayout: number | null;
 
-    uiSchema: unknown | null;
+    uiSchema: unknown;
 
     updatedAt: string;
 
@@ -279,7 +279,7 @@ export namespace AgentListResponse {
 
     visibility: string;
 
-    webhookDetails: unknown | null;
+    webhookDetails: unknown;
 
     webhookEnabled: boolean | null;
   }

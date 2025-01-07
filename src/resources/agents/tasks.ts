@@ -45,11 +45,11 @@ export namespace TaskCreateResponse {
 
     createdAt: string;
 
-    data: unknown | null;
+    data: unknown;
 
     paymentComplete: boolean | null;
 
-    paymentDetails: unknown | null;
+    paymentDetails: unknown;
 
     status: string;
 
