@@ -53,13 +53,13 @@ export namespace MeRetrieveResponse {
 
     description: string | null;
 
-    details: unknown | null;
+    details: unknown;
 
     handle: string | null;
 
     image: string | null;
 
-    inputSchema: unknown | null;
+    inputSchema: unknown;
 
     pendingPayout: number | null;
 
@@ -79,7 +79,7 @@ export namespace MeRetrieveResponse {
 
     totalPayout: number | null;
 
-    uiSchema: unknown | null;
+    uiSchema: unknown;
 
     updatedAt: string;
 
@@ -89,7 +89,7 @@ export namespace MeRetrieveResponse {
 
     visibility: string;
 
-    webhookDetails: unknown | null;
+    webhookDetails: unknown;
 
     webhookEnabled: boolean | null;
   }
@@ -102,13 +102,13 @@ export namespace MeRetrieveResponse {
 
     apiKey: string | null;
 
-    billingSettings: unknown | null;
+    billingSettings: unknown;
 
     createdAt: string;
 
     credits: number;
 
-    data: unknown | null;
+    data: unknown;
 
     /**
      * The user's email
