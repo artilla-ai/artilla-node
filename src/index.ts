@@ -44,6 +44,7 @@ const environments = {
   environment_2: 'http://localhost:3000',
 };
 type Environment = keyof typeof environments;
+
 export interface ClientOptions {
   /**
    * Specifies the environment to use for the API.
