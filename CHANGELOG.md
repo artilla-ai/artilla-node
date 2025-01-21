@@ -1,5 +1,47 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-01-21)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** manual updates ([#59](https://github.com/artilla-ai/artilla-node/issues/59)) ([df26695](https://github.com/artilla-ai/artilla-node/commit/df266952c45c0363d39abcf259adeb3dce197dd3))
+* **api:** manual updates ([#61](https://github.com/artilla-ai/artilla-node/issues/61)) ([b65c86d](https://github.com/artilla-ai/artilla-node/commit/b65c86d292597a4661f3cc2a06246c17d88aa080))
+* **internal:** make git install file structure match npm ([#69](https://github.com/artilla-ai/artilla-node/issues/69)) ([657f8b9](https://github.com/artilla-ai/artilla-node/commit/657f8b90994b2bf26d045161c72263ed969ac1a1))
+
+
+### Bug Fixes
+
+* **client:** normalize method ([#75](https://github.com/artilla-ai/artilla-node/issues/75)) ([fae1a85](https://github.com/artilla-ai/artilla-node/commit/fae1a85db49b73acb715d1e8da0c523d04cbce0c))
+
+
+### Chores
+
+* **client:** simplify `unknown | null` to just `unknown` ([#78](https://github.com/artilla-ai/artilla-node/issues/78)) ([8748ce6](https://github.com/artilla-ai/artilla-node/commit/8748ce6631bba23a9307245097806f1d21e695d4))
+* **internal:** add test ([#82](https://github.com/artilla-ai/artilla-node/issues/82)) ([c74439f](https://github.com/artilla-ai/artilla-node/commit/c74439fdc597fdb6a9e108a01661c0128f3bb793))
+* **internal:** bump cross-spawn to v7.0.6 ([#71](https://github.com/artilla-ai/artilla-node/issues/71)) ([84730da](https://github.com/artilla-ai/artilla-node/commit/84730daf80cb076bef420b44faebbb6296cf8fc2))
+* **internal:** change formatting ([#80](https://github.com/artilla-ai/artilla-node/issues/80)) ([5925c6b](https://github.com/artilla-ai/artilla-node/commit/5925c6b6639cc42a22b823eb24c30d1d5d3d7ffe))
+* **internal:** codegen related update ([#77](https://github.com/artilla-ai/artilla-node/issues/77)) ([fa1c676](https://github.com/artilla-ai/artilla-node/commit/fa1c6766ce8585674d2b789e7006b779acc3b36c))
+* **internal:** codegen related update ([#79](https://github.com/artilla-ai/artilla-node/issues/79)) ([5e23b1b](https://github.com/artilla-ai/artilla-node/commit/5e23b1b5c612ab0f42b5215635ed7668547ea7f2))
+* **internal:** codegen related update ([#81](https://github.com/artilla-ai/artilla-node/issues/81)) ([cbe102e](https://github.com/artilla-ai/artilla-node/commit/cbe102eaff64ccc7199186f71b6f6d69e7118d39))
+* **internal:** fix some typos ([#74](https://github.com/artilla-ai/artilla-node/issues/74)) ([2b6779f](https://github.com/artilla-ai/artilla-node/commit/2b6779f4ac52456ea44dd550caaec136ff1122ca))
+* **internal:** remove unnecessary getRequestClient function ([#70](https://github.com/artilla-ai/artilla-node/issues/70)) ([2c59125](https://github.com/artilla-ai/artilla-node/commit/2c5912526475a6dcfa3c8b30b8b96a6203d5a4c9))
+* **internal:** update isAbsoluteURL ([#73](https://github.com/artilla-ai/artilla-node/issues/73)) ([4fdd030](https://github.com/artilla-ai/artilla-node/commit/4fdd0308b79c53f50b05a97b34d75728144937c9))
+* rebuild project due to codegen change ([#62](https://github.com/artilla-ai/artilla-node/issues/62)) ([b0f26b0](https://github.com/artilla-ai/artilla-node/commit/b0f26b00ac2245357ad52c09e65a120ab1013904))
+* rebuild project due to codegen change ([#63](https://github.com/artilla-ai/artilla-node/issues/63)) ([2b481eb](https://github.com/artilla-ai/artilla-node/commit/2b481ebacbfc2f48420220447fb209858cefe0ad))
+* rebuild project due to codegen change ([#64](https://github.com/artilla-ai/artilla-node/issues/64)) ([08a951c](https://github.com/artilla-ai/artilla-node/commit/08a951cfc3067bff8ebe48b71acba48b82d51c22))
+* rebuild project due to codegen change ([#65](https://github.com/artilla-ai/artilla-node/issues/65)) ([c91d1c4](https://github.com/artilla-ai/artilla-node/commit/c91d1c40aed243e43cf2d4a0cd74a5c7d2d54e87))
+* rebuild project due to codegen change ([#66](https://github.com/artilla-ai/artilla-node/issues/66)) ([791e3f1](https://github.com/artilla-ai/artilla-node/commit/791e3f14102d6df98599cc944579ecfa06054a40))
+* remove redundant word in comment ([#68](https://github.com/artilla-ai/artilla-node/issues/68)) ([f12b47e](https://github.com/artilla-ai/artilla-node/commit/f12b47e7ae7f7960ca46258232bd70fb9d635091))
+* **types:** nicer error class types + jsdocs ([#72](https://github.com/artilla-ai/artilla-node/issues/72)) ([887a2d4](https://github.com/artilla-ai/artilla-node/commit/887a2d4c7fc17eac01684eb5a4642267382b4b55))
+
+
+### Documentation
+
+* minor formatting changes ([#76](https://github.com/artilla-ai/artilla-node/issues/76)) ([56c6370](https://github.com/artilla-ai/artilla-node/commit/56c637011b596e47c26685be6b5aab1b00c4741b))
+* remove suggestion to use `npm` call out ([#67](https://github.com/artilla-ai/artilla-node/issues/67)) ([5011e53](https://github.com/artilla-ai/artilla-node/commit/5011e537c04bdf49dfdfdf17f8405b56e6f47865))
+
 ## 0.1.0-alpha.7 (2024-08-22)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
