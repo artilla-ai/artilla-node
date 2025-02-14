@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-02-14)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#84](https://github.com/artilla-ai/artilla-node/issues/84)) ([cd64b2e](https://github.com/artilla-ai/artilla-node/commit/cd64b2e8825f27e79332fb28cd3f5f8d1ca0d070))
+
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#86](https://github.com/artilla-ai/artilla-node/issues/86)) ([aff9b32](https://github.com/artilla-ai/artilla-node/commit/aff9b32e3b95f48cca84692867c5e0dbbc0d861a))
+
 ## 0.1.0-alpha.8 (2025-01-21)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
