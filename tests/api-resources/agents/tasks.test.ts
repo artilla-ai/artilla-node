@@ -21,7 +21,7 @@ describe('resource tasks', () => {
     const response = await client.agents.tasks.create('agentId', {
       data: {},
       cancelUrl: 'cancelUrl',
-      email: 'dev@stainlessapi.com',
+      email: 'dev@stainless.com',
       successUrl: 'successUrl',
       test: true,
       authorization: 'authorization',
