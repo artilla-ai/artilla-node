@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#91](https://github.com/artilla-ai/artilla-node/issues/91)) ([c77fbc8](https://github.com/artilla-ai/artilla-node/commit/c77fbc8706ebdab0f8f72b8656a762b2e2c822de))
+* **client:** accept RFC6838 JSON content types ([#92](https://github.com/artilla-ai/artilla-node/issues/92)) ([fb5e900](https://github.com/artilla-ai/artilla-node/commit/fb5e9006113984c4c44e532ad78d74050ee31593))
+
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#94](https://github.com/artilla-ai/artilla-node/issues/94)) ([8b354b3](https://github.com/artilla-ai/artilla-node/commit/8b354b3eeee91d180b01e0c1aa3c59d55e8a045c))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#88](https://github.com/artilla-ai/artilla-node/issues/88)) ([292ad6d](https://github.com/artilla-ai/artilla-node/commit/292ad6d773e743513d508fd4c773b85cb082395a))
+* **internal:** remove extra empty newlines ([#93](https://github.com/artilla-ai/artilla-node/issues/93)) ([156e1d5](https://github.com/artilla-ai/artilla-node/commit/156e1d5c8328c6a4171aa5e37b2509a11d436336))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#90](https://github.com/artilla-ai/artilla-node/issues/90)) ([1c4b1cd](https://github.com/artilla-ai/artilla-node/commit/1c4b1cd500120818c2654d9bf31d404887d3ed6c))
+
 ## 0.1.0-alpha.9 (2025-02-14)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
