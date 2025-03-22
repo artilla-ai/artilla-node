@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-03-22)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#99](https://github.com/artilla-ai/artilla-node/issues/99)) ([36961be](https://github.com/artilla-ai/artilla-node/commit/36961bede4a7770c00cff6911d651b985d73fe5f))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#96](https://github.com/artilla-ai/artilla-node/issues/96)) ([e13f62a](https://github.com/artilla-ai/artilla-node/commit/e13f62a52372c58929ba540de873073319f796b4))
+* **exports:** stop using path fallbacks ([#98](https://github.com/artilla-ai/artilla-node/issues/98)) ([8001b35](https://github.com/artilla-ai/artilla-node/commit/8001b35a8585950a35f322597d8f294f3b9054e7))
+
 ## 0.1.0-alpha.10 (2025-03-14)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
