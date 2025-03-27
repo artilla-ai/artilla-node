@@ -1,2 +1,4 @@
 configured_endpoints: 15
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/artilla-ai%2Fartilla-db7d7d4115f017392e6f44e9753b07c5304c63fc9aa7226709771e4f6fdc6f07.yml
+openapi_spec_hash: 3ef17f2d7ecdaffc14a509defa8218a6
+config_hash: 2ddbe444198878b1fc8e3e4495d3cd67
