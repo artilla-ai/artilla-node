@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#105](https://github.com/artilla-ai/artilla-node/issues/105)) ([80e965e](https://github.com/artilla-ai/artilla-node/commit/80e965e4345238cf72115d5d17ed1a6ad72b26cf))
+* **client:** send `X-Stainless-Timeout` in seconds ([#103](https://github.com/artilla-ai/artilla-node/issues/103)) ([91f248c](https://github.com/artilla-ai/artilla-node/commit/91f248c24c5d6d0133cf4998b9f8da8a5bdac5d0))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#101](https://github.com/artilla-ai/artilla-node/issues/101)) ([53fb31d](https://github.com/artilla-ai/artilla-node/commit/53fb31d0d55fc3982c74e9e28f47d5215168fb5f))
+* **mcp:** remove unused tools.ts ([#106](https://github.com/artilla-ai/artilla-node/issues/106)) ([c75375d](https://github.com/artilla-ai/artilla-node/commit/c75375dcd929c6a32030d8ec6e75215c08c2f926))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#104](https://github.com/artilla-ai/artilla-node/issues/104)) ([18d0393](https://github.com/artilla-ai/artilla-node/commit/18d039360d8a5099d527e6f04601a8b13e389a6f))
+
 ## 0.1.0-alpha.11 (2025-03-22)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
