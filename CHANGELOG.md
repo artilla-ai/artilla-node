@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-06-04)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([1598f24](https://github.com/artilla-ai/artilla-node/commit/1598f2450a37c451d509f4a5899ae13afe5e01c9))
+* **ci:** bump node version for release workflows ([a1d19b8](https://github.com/artilla-ai/artilla-node/commit/a1d19b821c1462dcde656790edb7b0e031ec7cc1))
+* **ci:** only use depot for staging repos ([e1bc816](https://github.com/artilla-ai/artilla-node/commit/e1bc816f1c2d82f57e9041d5f445dfba5b010eb9))
+* **client:** minor internal fixes ([7eff77c](https://github.com/artilla-ai/artilla-node/commit/7eff77ccd570352a1789c789ddf76ca02297e27f))
+* **docs:** grammar improvements ([db22dde](https://github.com/artilla-ai/artilla-node/commit/db22dde1646a0d173f9e68412a4bf955626dbd86))
+* **docs:** use top-level-await in example snippets ([f1216d3](https://github.com/artilla-ai/artilla-node/commit/f1216d33887e7700c527e00acbdd9a5108f28e51))
+* improve publish-npm script --latest tag logic ([71d3f89](https://github.com/artilla-ai/artilla-node/commit/71d3f897a369aa418f7180ee86362b07ae20101d))
+* **internal:** codegen related update ([6041a5c](https://github.com/artilla-ai/artilla-node/commit/6041a5cdd8889f1d64658f9be004183c1110a27b))
+* **internal:** reduce CI branch coverage ([9d6b21c](https://github.com/artilla-ai/artilla-node/commit/9d6b21ccbf1e96830ac5b541562eb4d268c93530))
+* **internal:** upload builds and expand CI branch coverage ([2b38078](https://github.com/artilla-ai/artilla-node/commit/2b380786899bbc5cf01babbe13f02054a4c1c697))
+
+
+### Documentation
+
+* **readme:** fix typo ([748771a](https://github.com/artilla-ai/artilla-node/commit/748771a4f4cc4597ee0733e0337fd875f4d204da))
+
 ## 0.1.0-alpha.12 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/artilla-ai/artilla-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
