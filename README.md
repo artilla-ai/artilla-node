@@ -26,13 +26,9 @@ const client = new Artilla({
   environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
 });
 
-async function main() {
-  const me = await client.users.me.retrieve();
+const me = await client.users.me.retrieve();
 
-  console.log(me.agents);
-}
-
-main();
+console.log(me.agents);
 ```
 
 ### Request & Response types
@@ -47,11 +43,7 @@ const client = new Artilla({
   environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
 });
 
-async function main() {
-  const me: Artilla.Users.MeRetrieveResponse = await client.users.me.retrieve();
-}
-
-main();
+const me: Artilla.Users.MeRetrieveResponse = await client.users.me.retrieve();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -64,19 +56,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const me = await client.users.me.retrieve().catch(async (err) => {
-    if (err instanceof Artilla.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const me = await client.users.me.retrieve().catch(async (err) => {
+  if (err instanceof Artilla.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
